@@ -19,19 +19,51 @@
      * along with S-Update.  If not, see <http://www.gnu.org/licenses/>.
      */
 
-    $VERSION="2.0.0-SNAPSHOT";
+    $VERSION = "2.0.0-SNAPSHOT";
 
     if(isset($_GET['request']))
         if($_GET['request'] == 'download')
             download();
+        else if($_GET['request'] == 'install')
+            install();
+        else if($_GET['request'] == 'littleThings')
+            littleThings();
+        else if($_GET['request'] == 'redirect')
+            redirect();
         else
             home();
     else
         home();
 
-
     function download() {
+    	global $VERSION;
+        file_put_contents("s-update-server-$VERSION.zip", fopen("http://theshark34.github.io/S-Update-Server/server/s-update-server-$VERSION.zip", 'r'));
         echo "success";
+    }
+
+    function install() {
+    	global $VERSION;
+    	$file = "s-update-server-$VERSION.zip";
+    	$path = pathinfo(realpath($file), PATHINFO_DIRNAME);
+    	$zip = new ZipArchive;
+		if ($zip->open($file) === TRUE) {
+		    $zip->extractTo($path);
+		    $zip->close();
+		    echo "success";
+		} else {
+		    echo 'Unable to close the zip.';
+		}
+		unlink($file);
+    }
+
+    function littleThings() {
+    	unlink("installer.php");
+    	echo "success";
+    }
+
+    function redirect() {
+    	header('Location: config.php');
+    	echo "success";
     }
 
     function home() {
@@ -44,7 +76,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>S-Update - Acceuil</title>
+        <title>S-Update Installer</title>
 
         <!-- Bootstrap -->
         <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
@@ -77,7 +109,7 @@
         <!-- Offical S-Update install script -->
         <script src="http://theshark34.github.io/S-Update-Server/installer.js"></script>
 
-        <!-- Starting Downloader -->
+        <!-- Starting Installer -->
         <script> sendInstallerRequest("download", startInstallation); </script>
     </body>
 </html> 
