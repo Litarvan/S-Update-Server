@@ -34,30 +34,32 @@
         home();
 
     function download() {
-    	global $VERSION;
+        global $VERSION;
         file_put_contents("s-update-server-$VERSION.zip", fopen("http://theshark34.github.io/S-Update-Server/server/s-update-server-$VERSION.zip", 'r'));
         echo "success";
     }
 
     function install() {
-    	global $VERSION;
-    	$file = "s-update-server-$VERSION.zip";
-    	$path = pathinfo(realpath($file), PATHINFO_DIRNAME);
-    	$zip = new ZipArchive;
-		if ($zip->open($file) === TRUE) {
-		    $zip->extractTo($path);
-		    $zip->close();
-		    echo "success";
-		} else {
-		    echo 'Unable to close the zip.';
-		}
-		unlink($file);
+        global $VERSION;
+
+    	  $file = "s-update-server-$VERSION.zip";
+    	  $path = pathinfo(realpath($file), PATHINFO_DIRNAME);
+    	  $zip = new ZipArchive;
+
+		    if ($zip->open($file) === TRUE) {
+		        $zip->extractTo($path);
+		        $zip->close();
+		        echo "success";
+		    } else
+		        echo 'Unable to close the zip.';
+
+		    unlink($file);
     }
 
     function redirect() {
-    	unlink("installer.php");
-    	header('Location: config.php');
-    	echo "success";
+    	  unlink("installer.php");
+    	  header('Location: config.php');
+    	  echo "success";
     }
 
     function home() {

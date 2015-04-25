@@ -21,8 +21,8 @@
 
     $VERSION = "2.0.0-SNAPSHOT";
 
-    if(isset($_GET['username']) && isset($_GET['password']) && isset($_GET['redirecturl']))
-        applyConfig(htmlspecialchars($_GET['username']), htmlspecialchars($_GET['password']), htmlspecialchars($_GET['redirecturl']));
+    if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['redirecturl']))
+        applyConfig(htmlspecialchars($_POST['username']), htmlspecialchars($_POST['password']), htmlspecialchars($_GET['redirecturl']));
     else
         config();
 
@@ -86,21 +86,30 @@
     </head>
 
     <body>
-        <div class='fulldiv'>
-            <div class="center" style="height: 275px; margin-top: -400px;">
-                <img src="http://theshark34.github.io/S-Update-Server/logo.png" />
-                <div style="text-align: center; font-size: 16px;">
-                    <h1>Configuration</h1>
+        <div class="fulldiv classic">
+            <img src="http://theshark34.github.io/S-Update-Server/logo.png" />
+
+            <h1>Configuration</h1>
+            <br />
+            <p class="marged-paragraph">
+                Bienvenue dans la configuration de votre S-Update. Si vous voyez ce message, c'est que l'installation s'est bien passée. Super !
+                <br/>
+                Nous allons configurer la page de redirection, quand on tombera sur la page du serveur, elle redirigera vers l'adresse que vous donnerez. Vous pourrez la changer a tout moment, tout est dans le dossier protected/. Comme son nom l'indique il sera protégé dès que vous aurez aussi configuré le mot de passe et le pseudo sur cette page.
+                <br />
+                Alors, qu'est-ce que vous attendez =) !
+
+                <br /><br /><br />
+
+                <form method="post" action="config.php">
+                    <label for="username">Pseudo</label> : <input class="text-field" type="text" name="username" id="username" required/>
                     <br />
-                    <p>
-                        Bienvenue dans la configuration de votre S-Update. Si vous voyez ce message, c'est que l'installation s'est bien passée. Super !
-                        <br/>
-                        Nous allons configurer la page de redirection, quand on tombera sur la page du serveur, elle redirigera vers l'adresse que vous donnerez. Vous pourrez la changer a tout moment, tout est dans le dossier protected/. Comme son nom l'indique il sera protégé dès que vous aurez aussi configuré le mot de passe et le pseudo sur cette page.
-                        <br />
-                        Alors, qu'est-ce que vous attendez =) !
-                    </p>
-                </div>
-            </div>
+                    <label for="password">Mot de Passe</label> : <input class="text-field" type="password" name="password" id="password" required/>
+                    <br /><br />
+                    <label for="redirecturl">Acceuil de votre Site</label> : <input class="text-field" type="text" name="redirecturl" id="redirecturl" required/>
+                    <br /><br />
+                    <input class="submit-button" type="submit" value="Appliquer" />
+                </form>
+            </p>
         </div>
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
