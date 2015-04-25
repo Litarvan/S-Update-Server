@@ -57,7 +57,6 @@
     }
 
     function redirect() {
-    	unlink("installer.php");
     	header('Location: config.php');
     	echo "success";
     }
