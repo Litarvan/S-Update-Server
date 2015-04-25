@@ -18,22 +18,22 @@
  */
 
 function startInstallation() {
-	setPercentage(25);
+    setPercentage(25);
 }
 
 function sendInstallerRequest(request, callback) {
-	var http = new XMLHttpRequest();
-	http.open("GET", "installer.php?request=" + request, true);
-	http.onreadystatechange = function() {
-		if(http.readyState == 4 && (http.status == 200 || http.status == 0))
-			if(http.responseText == "success")
-				callback();
-			else 
-				alert("An error occured, installer returned : " + http.responseText + "\nMake sure the installer is called installer.php and you have a working internet connection.");
-	}
-	http.send(null);
+    var http = new XMLHttpRequest();
+    http.open("GET", "installer.php?request=" + request, true);
+    http.onreadystatechange = function() {
+        if(http.readyState == 4 && (http.status == 200 || http.status == 0))
+            if(http.responseText == "success")
+                callback();
+            else 
+                alert("An error occured, installer returned : " + http.responseText + "\nMake sure the installer is called installer.php and you have a working internet connection.");
+    }
+    http.send(null);
 }
 
 function setPercentage(percentage) {
-	$('#pb').css('width', percentage + '%').attr('aria-valuenow', percentage);
+    $('#pb').css('width', percentage + '%').attr('aria-valuenow', percentage);
 }
