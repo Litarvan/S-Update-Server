@@ -33,7 +33,7 @@
 
 
 	function download() {
-		echo "<script>alert('It works !');</script>";
+		echo "success";
 	}
 
 	function home() {
@@ -68,7 +68,7 @@
 			</div>
 
 	    	<div class="progress">
-			    <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+			    <div id="pb" class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 			</div>
 		</div>
 
