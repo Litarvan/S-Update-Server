@@ -17,8 +17,11 @@
  * along with S-Update.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+body {
+	background-color: #333;
+}
+
 .fulldiv {
-    background-color: #333;
     width: 100%;
     height: auto;
     bottom: 0px;
