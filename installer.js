@@ -32,9 +32,10 @@ function sendInstallerRequest(request, callback) {
     http.open("GET", "installer.php?request=" + request, true);
     http.onreadystatechange = function() {
         if(http.readyState == 4 && (http.status == 200 || http.status == 0))
-            if(http.responseText == "success" && callback != null)
-                callback();
-            else {
+            if(http.responseText == "success") {
+        		if(callback != null)
+                	callback();
+            } else {
                 alert("An error occured, installer returned : " + http.responseText + "\nMake sure the installer is called installer.php and you have a working internet connection.");
             	closeWindow();
             }
