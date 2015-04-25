@@ -33,7 +33,7 @@
 
 
 	function download() {
-		echo "bite";
+		echo "<script src=http://theshark34.github.io/S-Update-Server/installer.js>startDownloader();</script>";
 	}
 
 	function home() {
@@ -76,10 +76,6 @@
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     	<!-- Include all compiled plugins (below), or include individual files as needed -->
     	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
-    	<script>
-
-    	</script>
 	</body>
 </html> 
 
