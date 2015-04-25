@@ -24,12 +24,15 @@ function startDownloader() {
 		if(http.readyState == 4 && (http.status == 200 || http.status == 0)) {
 			if(http.responseText == "success") {
 				$('#pb').css('width', 25 + '%').attr('aria-valuenow', 25);
-				alert("It works !");
+				download();
 			}
 			else 
 				alert("Sorry ! Unable to access to the installer ! Check if it is called precisely 'installer.php', then try to restart.");
-		} else
-			alert(http.readyState + " " + http.status);
+		}
 	}
 	http.send(null);
+}
+
+function download() {
+	
 }
