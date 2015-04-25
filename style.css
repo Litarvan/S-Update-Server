@@ -58,9 +58,18 @@
 .classic {
 	text-align: center;
 	font-size: 16px;
+	margin-top: 50px;
 }
 
-.margedparagraph {
+.marged-paragraph {
 	margin-right: 20%;
 	margin-left: 20%;
+}
+
+.submit-button {
+	border: none;
+	background-color: #444;
+	color: #FFF;
+	width: 95px;
+	height: 35px;
 }
