@@ -18,11 +18,14 @@
  */
 
 function startDownloader() {
+	var http = new XMLHttpRequest();
 	http.open("GET", "installer.php?request=download", true);
 	http.onreadystatechange = function() {
 		if(http.readyState == 4 && http.status == 200) {
-			if(http.responseText == "success")
-				$('.progress-bar').css('width', 25 + '%').attr('aria-valuenow', 25); 
+			if(http.responseText == "success") {
+				$('#pb').css('width', 25 + '%').attr('aria-valuenow', 25);
+				alert("It works !");
+			}
 			else 
 				alert("Sorry ! Unable to access to the installer ! Check if it is called precisely 'installer.php', then try to restart.");
 		}
