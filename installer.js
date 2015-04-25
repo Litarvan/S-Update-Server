@@ -19,7 +19,7 @@
 
 function startInstallation() {
     setPercentage(55);
-    sendInstallerRequest("install", doLittleThings);
+    sendInstallerRequest("install", redirect);
 }
 
 function redirect() {
