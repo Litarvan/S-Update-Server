@@ -56,12 +56,8 @@
 		unlink($file);
     }
 
-    function littleThings() {
-    	unlink("installer.php");
-    	echo "success";
-    }
-
     function redirect() {
+    	unlink("installer.php");
     	header('Location: config.php');
     	echo "success";
     }
