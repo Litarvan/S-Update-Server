@@ -58,5 +58,6 @@
 .classic {
 	text-align: center;
 	font-size: 16px;
-	background-color: #333;
+	margin-right: 225px;
+	margin-left: 225px;
 }
