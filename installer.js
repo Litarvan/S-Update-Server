@@ -28,7 +28,9 @@ function sendInstallerRequest(request, callback) {
         if(http.readyState == 4 && (http.status == 200 || http.status == 0))
             if(http.responseText == "success")
                 callback();
-            else 
+            else if(http.responseText.indexOf("failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found" > -1))
+            	alert("Can't download the S-Update server !\nMake sure you have a working internet connection. Try updating the installer.");
+            else
                 alert("An error occured, installer returned : " + http.responseText + "\nMake sure the installer is called installer.php and you have a working internet connection.");
     }
     http.send(null);
