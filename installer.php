@@ -26,8 +26,6 @@
             download();
         else if($_GET['request'] == 'install')
             install();
-        else if($_GET['request'] == 'littleThings')
-            littleThings();
         else if($_GET['request'] == 'redirect')
             redirect();
         else
@@ -57,6 +55,7 @@
     }
 
     function redirect() {
+    	unlink("installer.php");
     	header('Location: config.php');
     	echo "success";
     }
