@@ -54,3 +54,9 @@
 .progress-bar-custom {
     background: rgba(150, 150, 150, 1);
 }
+
+.classic {
+	text-align: center;
+	font-size: 16px;
+	background-color: #333;
+}
