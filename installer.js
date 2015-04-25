@@ -29,7 +29,7 @@ function sendInstallerRequest(request, callback) {
 			if(http.responseText == "success")
 				callback();
 			else 
-				alert("An error occured, installer returned : " + http.reponseText + "\nMake sure the installer is called installer.php and you have a working internet connection.");
+				alert("An error occured, installer returned : " + http.responseText + "\nMake sure the installer is called installer.php and you have a working internet connection.");
 	}
 	http.send(null);
 }
