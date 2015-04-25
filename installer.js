@@ -30,10 +30,10 @@ function sendInstallerRequest(request, callback) {
                 callback();
             else if(http.responseText.indexOf("failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found" > -1)) {
             	alert("Can't download the S-Update server !\nMake sure you have a working internet connection. Try updating the installer.");
-            	close();
+            	closeWindow();
             } else {
                 alert("An error occured, installer returned : " + http.responseText + "\nMake sure the installer is called installer.php and you have a working internet connection.");
-            	close();
+            	closeWindow();
             }
     }
     http.send(null);
@@ -41,4 +41,8 @@ function sendInstallerRequest(request, callback) {
 
 function setPercentage(percentage) {
     $('#pb').css('width', percentage + '%').attr('aria-valuenow', percentage);
+}
+
+function closeWindow() {
+	window.open('','_self').close();
 }
