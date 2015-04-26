@@ -24,7 +24,8 @@ function startInstallation() {
 
 function redirect() {
 	setPercentage(100);
-	sendInstallerRequest("redirect", null);
+	sendInstallerRequest("deleteInstaller", null);
+    window.location.replace("config.php");
 }
 
 function sendInstallerRequest(request, callback) {
