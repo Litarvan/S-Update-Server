@@ -1,68 +1,21 @@
-<?php
+<!--
+   Copyright 2015 TheShark34
 
-    /*
-     * Copyright 2015 TheShark34
-     *
-     * This file is part of S-Update.
+   This file is part of S-Update.
 
-     * S-Update is free software: you can redistribute it and/or modify
-     * it under the terms of the GNU Lesser General Public License as published by
-     * the Free Software Foundation, either version 3 of the License, or
-     * (at your option) any later version.
-     *
-     * S-Update is distributed in the hope that it will be useful,
-     * but WITHOUT ANY WARRANTY; without even the implied warranty of
-     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-     * GNU Lesser General Public License for more details.
-     *
-     * You should have received a copy of the GNU Lesser General Public License
-     * along with S-Update.  If not, see <http://www.gnu.org/licenses/>.
-     */
+   S-Update is free software: you can redistribute it and/or modify
+   it under the terms of the GNU Lesser General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
 
-    $VERSION = "2.0.0-SNAPSHOT";
+   S-Update is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU Lesser General Public License for more details.
 
-    if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['redirecturl']))
-        applyConfig(htmlspecialchars($_POST['username']), htmlspecialchars($_POST['password']), htmlspecialchars($_GET['redirecturl']));
-    else
-        config();
-
-    function applyConfig($username, $password, $redirectUrl) {
-        if(!file_exists("protected/"))
-            mkdir("protected/");
-        if(file_exists("protected/.htpasswd"))
-            unlink("protected/.htpasswd");
-        if(file_exists("protected/.htaccess"))
-            unlink("protected/.htaccess");
-        if(file_exists("protected/.redirecturl"))
-            unlink("protected/.redirecturl");
-
-        $password = crypt($password);
-        $htpasswd = "$username:$password";
-        $htpasswdFile = fopen('protected/.htpasswd', 'a');
-        $htpasswdPath = realpath("protected/.htpasswd");
-        $htaccess = "AuthName \"S-Update Server proteced page\"\n" .
-                    "AuthType Basic\n" .
-                    "AuthUserFile \"$htpasswdPath\"\n" .
-                    "Require valid-user";
-        $htaccessFile = fopen('protected/.htaccess', 'a');
-        $redirectUrlFile = fopen('protected/.redirecturl', 'a');
-
-        fputs($htpasswdFile, $htpasswd);
-        fputs($htaccessFile, $htaccess);
-        fputs($redirectUrlFile, $redirectUrl);
-
-        fclose($htpasswdFile);
-        fclose($htaccessFile);
-        fclose($redirectUrlFile);
-
-        unlink("config.php");
-
-        header("Location: protected/");
-    }
-
-    function config() {
-
-?>
+   You should have received a copy of the GNU Lesser General Public License
+   along with S-Update.  If not, see <http://www.gnu.org/licenses/>.
+-->
 
 <!DOCTYPE html>
 <html>
@@ -100,7 +53,7 @@
 
                 <br /><br /><br />
 
-                <form method="post" action="config.php">
+                <form method="post" action="protected/config.php">
                     <label for="username">Pseudo</label> : <input class="text-field" type="text" name="username" id="username" required/>
                     <br />
                     <label for="password">Mot de Passe</label> : <input class="text-field" type="password" name="password" id="password" required/>
@@ -118,7 +71,3 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     </body>
 </html>
-
-<?php
-
-    }
