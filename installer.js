@@ -19,12 +19,16 @@
 
 function startInstallation() {
     setPercentage(55);
-    sendInstallerRequest("install", redirect);
+    sendInstallerRequest("install", deleteInstaller);
+}
+
+function deleteInstaller() {
+	setPercentage(90);
+	sendInstallerRequest("deleteInstaller", redirect);
 }
 
 function redirect() {
-	setPercentage(100);
-	sendInstallerRequest("deleteInstaller", null);
+    setPercentage(100);
     window.location.replace("config.php");
 }
 
