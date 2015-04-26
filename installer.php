@@ -26,8 +26,8 @@
             download();
         else if($_GET['request'] == 'install')
             install();
-        else if($_GET['request'] == 'redirect')
-            redirect();
+        else if($_GET['request'] == 'deleteInstaller')
+            deleteInstaller();
         else
             home();
     else
@@ -56,9 +56,9 @@
 		    unlink($file);
     }
 
-    function redirect() {
+    function deleteInstaller() {
     	  unlink("installer.php");
-    	  header('Location: config.php');
+        echo "success";
     }
 
     function home() {
