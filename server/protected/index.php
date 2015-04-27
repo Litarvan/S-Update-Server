@@ -22,15 +22,19 @@
     $stats = "";
 
     if(file_exists(".stats")) {
-        $statsFile = fopen(".stats", 'r');
-        $stats = fgets($statsFile);
+        $statsFile = fopen(".stats", "r");
+
+        for ($i = 0; $i < 5 && $stats != false; $i++)
+            $stats .= fgets($statsFile);
+
         fclose($statsFile);
     }
 
-    if(file_exists(".connections")) {
-        $conFile = fopen(".connections", 'r');
-        $con = fgets($conFile);
-        fclose($conFile);
+    if(file_exists(".connexions")) {
+        $con = file_get_contents(".connexions") . " connections au total.";
+
+        if($con == "")
+          $con = "Aucune connection";
     }
 ?>
 
@@ -65,7 +69,7 @@
                 <div>
                     Bienvenue sur la page d'administration de votre serveur S-Update. Votre serveur fonctionne parfaitement !
                     <br />
-                    Ici sont afficher les statistiques du serveur. Vous pouvez vous rendre sur la page de configuration en cliquant sur le bouton ci-dessous. 
+                    Ici sont afficher les statistiques du serveur. Vous pouvez vous rendre sur la page de configuration en cliquant sur le bouton ci-dessous.
                 </div>
 
                 <br />
@@ -84,7 +88,7 @@
 
                 <div>
                     <h3><u>Statistiques</u></h3>
-                    
+
                     <br />
                     <br />
 
@@ -92,7 +96,7 @@
                         <?php
                             global $con, $stats;
 
-                            echo $con . "<br /><br />" . $stats;
+                            echo $con . "<br /><br /><u>Dernières connections</u> <br /><br />" . nl2br($stats);
                         ?>
                     </p>
                 </div>
