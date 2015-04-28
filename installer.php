@@ -42,22 +42,25 @@
     function install() {
         global $VERSION;
 
-    	  $file = "s-update-server-$VERSION.zip";
-    	  $path = pathinfo(realpath($file), PATHINFO_DIRNAME);
-    	  $zip = new ZipArchive;
+        $file = "s-update-server-$VERSION.zip";
+        $path = pathinfo(realpath($file), PATHINFO_DIRNAME);
+        $zip = new ZipArchive;
 
-		    if ($zip->open($file) === TRUE) {
-		        $zip->extractTo($path);
-		        $zip->close();
-		        echo "success";
-		    } else
-		        echo 'Unable to close the zip.';
+        if ($zip->open($file) === TRUE) {
+            $zip->extractTo($path);
+            $zip->close();
+            echo "success";
+        } else
+            echo 'Unable to close the zip.';
 
-		    unlink($file);
+        unlink($file);
+
+        mkdir("files/");
+        touch("protected/.suignore");
     }
 
     function deleteInstaller() {
-    	  unlink("installer.php");
+    	unlink("installer.php");
         echo "success";
     }
 

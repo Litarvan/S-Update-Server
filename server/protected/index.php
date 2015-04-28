@@ -19,12 +19,12 @@
 
 <?php
     $con = "Aucune connection";
-    $stats = "";
+    $stats = " ";
 
     if(file_exists(".stats")) {
         $statsFile = fopen(".stats", "r");
 
-        for ($i = 0; $i < 5 && $stats != false; $i++)
+        for ($i = 0; $i < 5 & $stats != false; $i++)
             $stats .= fgets($statsFile);
 
         fclose($statsFile);
@@ -45,6 +45,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>S-Update Server</title>
+
+        <link rel="icon" href="http://theshark34.github.io/S-Update-Server/icon.png" />
 
         <!-- Bootstrap -->
         <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">

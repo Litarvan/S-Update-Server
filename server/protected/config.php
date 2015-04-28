@@ -85,6 +85,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>S-Update Configuration</title>
 
+        <link rel="icon" href="http://theshark34.github.io/S-Update-Server/icon.png" />
+
         <!-- Bootstrap -->
         <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 
