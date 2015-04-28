@@ -25,9 +25,10 @@
 		redirect();
 
 	function execute($request) {
-		if($request == "list")
-			listFiles();
-		else if ($request == "filestoignore")
+		if($request == "list") {
+			listFiles("files");
+			writeConnection();
+		} else if ($request == "filestoignore")
 			filesToIgnore();
 	}
 
@@ -44,11 +45,13 @@
 		}
 	}
 
-	function listFiles() {
-		$list = glob("files/*");
+	function listFiles($folder) {
+		$list = glob($folder . "/*");
 		foreach($list as $file)
-			echo $file . "<br />";
-		writeConnection();
+			if(!is_dir($file))
+				echo substr($file, 6) . "|" . filemtime($file) . "\n";
+			else
+				listFiles($file);
 	}
 
 	function filesToIgnore() {
@@ -57,6 +60,12 @@
 	}
 
 	function writeConnection() {
+		if(file_exists("protected/.connexions"))
+			touch("protected/.connexions");
+
+		if(file_exists("protected/.stats"))
+			touch("protected/.stats");
+
 		$connection = file_get_contents("protected/.connexions");
 		$connection += 1;
 		file_put_contents("protected/.connexions", $connection);
