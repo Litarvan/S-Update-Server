@@ -60,10 +60,10 @@
 	}
 
 	function writeConnection() {
-		if(file_exists("protected/.connexions"))
+		if(!file_exists("protected/.connexions"))
 			touch("protected/.connexions");
 
-		if(file_exists("protected/.stats"))
+		if(!file_exists("protected/.stats"))
 			touch("protected/.stats");
 
 		$connection = file_get_contents("protected/.connexions");
