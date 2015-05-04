@@ -26,7 +26,7 @@
 
 	function execute($request) {
 		if($request == "list") {
-			listFiles("files");
+			listFiles();
 			writeConnection();
 		} else if ($request == "filestoignore")
 			filesToIgnore();
@@ -45,13 +45,20 @@
 		}
 	}
 
-	function listFiles($folder) {
-		$list = glob($folder . "/*");
-		foreach($list as $file)
-			if(!is_dir($file))
-				echo substr($file, 6) . "|" . filemtime($file) . "\n";
-			else
-				listFiles($file);
+	function listFiles() {
+		require_once 'ChecksumGenerator.php';
+
+		$checksum = new ChecksumGenerator();
+		$checksum->setDir("files/");
+		$checksum->setFields(['path', 'mtime']);
+		$checksum->setUsedMethod($checksum::AS_ARRAY);
+		$checksum->generate();
+
+		$arrays = $checksum->get();
+
+		foreach ($arrays as &$array)
+			foreach ($array as &$value)
+				echo $value['path'] . '|' . $value['mtime'] . "\n";
 	}
 
 	function filesToIgnore() {
