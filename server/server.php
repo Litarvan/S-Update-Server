@@ -58,7 +58,7 @@
 
 		foreach ($arrays as &$array)
 			foreach ($array as &$value)
-				echo $value['path'] . '|' . $value['mtime'] . "\n";
+				echo str_replace("\\", "/", substr($value['path'], 7)) . '|' . $value['mtime'] . "\n";
 	}
 
 	function filesToIgnore() {
