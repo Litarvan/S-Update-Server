@@ -97,10 +97,6 @@ body {
 .wait {
 	width: 200px;
 	margin-left: -100px;
-	display: none;
-}
-
-.buttons {
-	margin-left: -160px;
 	margin-top: 100px;
+	display: none;
 }
