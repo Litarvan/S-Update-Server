@@ -32,14 +32,19 @@ function redirect() {
     window.location.replace("config.php");
 }
 
+function finish() {
+    alert("Finished !");
+    window.location.replace("index.php");
+}
+
 function sendRequest(file, request, callback) {
     var http = new XMLHttpRequest();
     http.open("GET", file + "?request=" + request, true);
     http.onreadystatechange = function() {
         if(http.readyState == 4 && (http.status == 200 || http.status == 0))
             if(http.responseText == "success") {
-        		if(callback != null)
-                	callback();
+            		if(callback != null)
+                    	callback();
             } else {
                 alert("An error occured, page returned : " + http.responseText + "\nMake sure the installer you didn't changed the files name and you have a working internet connection.");
                 closeWindow();
