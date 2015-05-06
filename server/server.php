@@ -20,16 +20,16 @@
 	 */
 
 	if(isset($_POST["request"]))
-		execute($_POST["request"]);
+		if($request == "updateStats")
+			updateStats();
+		else
+			redirect();
 	else
 		redirect();
 
 	function execute($request) {
-		if($request == "list") {
-			listFiles();
-			writeConnection();
-		} else if ($request == "filestoignore")
-			filesToIgnore();
+		if($request == "updateStats")
+			updateStats();
 	}
 
 	function redirect() {
@@ -45,28 +45,7 @@
 		}
 	}
 
-	function listFiles() {
-		require_once 'ChecksumGenerator.php';
-
-		$checksum = new ChecksumGenerator();
-		$checksum->setDir("files/");
-		$checksum->setFields(['path', 'mtime']);
-		$checksum->setUsedMethod($checksum::AS_ARRAY);
-		$checksum->generate();
-
-		$arrays = $checksum->get();
-
-		foreach ($arrays as &$array)
-			foreach ($array as &$value)
-				echo str_replace("\\", "/", substr($value['path'], 7)) . '|' . $value['mtime'] . "\n";
-	}
-
-	function filesToIgnore() {
-		if(file_exists("protected/.suignore"))
-			echo file_get_contents("protected/.suignore");
-	}
-
-	function writeConnection() {
+	function updateStats() {
 		if(!file_exists("protected/.connexions"))
 			touch("protected/.connexions");
 

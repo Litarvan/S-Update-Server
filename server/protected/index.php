@@ -65,23 +65,30 @@
         <div class="fulldiv classic">
             <img src="http://theshark34.github.io/S-Update-Server/logo.png" />
 
-            <h1><u>S-Update Server v2.0.0-SNAPSHOT</u></h1>
+            <h1><u>S-Update Server v2.1.0-SNAPSHOT</u></h1>
             <br />
             <p class="marged-paragraph">
                 <div>
                     Bienvenue sur la page d'administration de votre serveur S-Update. Votre serveur fonctionne parfaitement !
                     <br />
-                    Ici sont afficher les statistiques du serveur. Vous pouvez vous rendre sur la page de configuration en cliquant sur le bouton ci-dessous.
+                    Ici sont afficher les statistiques du serveur. Vous pouvez vous rendre sur la page de configuration en cliquant sur le bouton ci-dessous, où sur la page d'indexage.
+                    <br/>
+                    La page d'indexage actualise les fichiers du dossier files/ donc relancez là à chaques fois que vous avez modifié les fichiers pour enregistrer les modifications.
                 </div>
 
                 <br />
                 <br />
 
-                <button id="config" class="submit-button" style="width: 150px;">Configuration</button>
+                <button id="config" class="submit-button spaced" style="width: 150px;">Configuration</button>
+                <button id="indexer" class="submit-button" style="width: 150px;">Indexeur</button>
 
                 <script type="text/javascript">
                     document.getElementById("config").onclick = function () {
                         location.href = "config.php";
+                    };
+
+                    document.getElementById("indexer").onclick = function () {
+                        location.href = "indexer.php";
                     };
                 </script>
 

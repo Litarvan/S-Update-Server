@@ -19,7 +19,7 @@
      * along with S-Update.  If not, see <http://www.gnu.org/licenses/>.
      */
 
-    $VERSION = "2.0.0-SNAPSHOT";
+    $VERSION = "2.1.0-SNAPSHOT";
 
     if(isset($_GET['request']))
         if($_GET['request'] == 'download')
@@ -51,12 +51,12 @@
             $zip->close();
             echo "success";
         } else
-            echo 'Unable to close the zip.';
+            echo "Unable to close the zip. Don't forget to set the current folder permissions to 777";
 
         unlink($file);
 
         mkdir("files/");
-        touch("protected/.suignore");
+        touch("su_ignore.idx");
     }
 
     function deleteInstaller() {
@@ -104,13 +104,13 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-        <!-- Offical S-Update install script -->
-        <script src="http://theshark34.github.io/S-Update-Server/installer.js"></script>
+        <!-- Offical S-Update script -->
+        <script src="http://theshark34.github.io/S-Update-Server/supdate.js"></script>
 
         <!-- Starting Installer -->
-        <script> sendInstallerRequest("download", startInstallation); </script>
+        <script> sendRequest("installer.php", "download", startInstallation); </script>
     </body>
-</html> 
+</html>
 
 <?php
 
