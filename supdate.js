@@ -41,7 +41,7 @@ function sendRequest(file, request, callback) {
         		if(callback != null)
                 	callback();
             } else {
-                alert("An error occured, installer returned : " + http.responseText + "\nMake sure the installer you didn't changed the files name and you have a working internet connection.");
+                alert("An error occured, page returned : " + http.responseText + "\nMake sure the installer you didn't changed the files name and you have a working internet connection.");
                 closeWindow();
             }
     }
