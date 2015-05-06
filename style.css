@@ -88,3 +88,13 @@ body {
 .spaced {
 	margin-right: 20px;
 }
+
+.under-logo {
+	position: absolute;
+	width: 950px;
+	height: 200px;
+	top: 50%;
+	left: 50%;
+	margin-left: -475px;
+	margin-top: 100px;
+}
