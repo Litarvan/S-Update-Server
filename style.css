@@ -41,7 +41,7 @@ body {
     top: 50%;
     left: 50%;
     margin-left: -475px;
-    margin-top: 90px; 
+    margin-top: 90px;
 }
 
 .center {
@@ -51,7 +51,7 @@ body {
     top: 50%;
     left: 50%;
     margin-left: -475px;
-    margin-top: -110px; 
+    margin-top: -110px;
 }
 
 .progress-bar-custom {
@@ -83,4 +83,8 @@ body {
 	height: 30px;
 	border: none;
 	background-color: #444;
+}
+
+.spaced {
+	margin-right: 20px;
 }
