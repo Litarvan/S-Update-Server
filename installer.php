@@ -19,7 +19,7 @@
      * along with S-Update.  If not, see <http://www.gnu.org/licenses/>.
      */
 
-    $VERSION = "2.1.0-SNAPSHOT";
+    $VERSION = "2.2.0-SNAPSHOT";
 
     if(isset($_GET['request']))
         if($_GET['request'] == 'download')
@@ -56,6 +56,7 @@
         unlink($file);
 
         mkdir("files/");
+        mkdir("zips/");
         touch("su_ignore.idx");
     }
 

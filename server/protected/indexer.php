@@ -32,6 +32,10 @@
     function index($md5) {
       $index = listFiles($md5, "../files");
       file_put_contents("../su_files.idx", $index);
+
+      $zipIndex = listZips("../zips");
+      file_put_contents("../su_zips.idx", $zipIndex);
+
       echo "success";
     }
 
@@ -51,6 +55,30 @@
       return $index;
     }
 
+    function listZips($folder) {
+      $list = glob($folder . "/*");
+      $index = "";
+
+      foreach($list as $file)
+        if(!is_dir($file))
+          $index .= substr($file, 8) . "|" . substr(dirname($file), 8) . "/" . getAnyFile($file);
+        else if ($file != "./")
+          $index .= listZips($file);
+
+      return $index;
+    }
+
+    function getAnyFile($zip) {
+      $zipFile = zip_open($zip);
+      $zip_entry = zip_read($zipFile);
+      $name = zip_entry_name($zip_entry);
+
+      zip_entry_close($zip_entry);
+      zip_close($zipFile);
+
+      return $name;
+    }
+
     function home() {
 
 ?>
@@ -61,7 +89,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>S-Update Installer</title>
+    <title>S-Update Indexer</title>
 
     <!-- Bootstrap -->
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">

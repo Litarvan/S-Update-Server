@@ -20,7 +20,7 @@
 	 */
 
 	if(isset($_POST["request"]))
-		if($request == "updateStats")
+		if($_POST["request"] == "updateStats")
 			updateStats();
 		else
 			redirect();
