@@ -29,6 +29,9 @@ require 'Paladin/Route.php';
 require 'Paladin/RouteLoader.php';
 require 'Paladin/ThemeLoader.php';
 
+// TODO: Remove this line, only for dev
+Paladin\Paladin::setAutoreloadEnabled(true);
+
 // Load the route for the current URL
 Paladin\Paladin::getRouteLoader()->loadRoute();
 

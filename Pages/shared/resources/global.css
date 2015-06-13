@@ -1,0 +1,16 @@
+body {
+    background-image: url(background.png);
+    color: #fff;
+}
+
+button {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.15);
+    width: 150px;
+    height: 35px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}

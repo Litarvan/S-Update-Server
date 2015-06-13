@@ -1,71 +1,83 @@
 <!--
   Copyright 2015 TheShark34
 
-  This file is part of Paladin.
+  This file is part of S-Update-Server.
 
-  Paladin is free software: you can redistribute it and/or modify
+  S-Update-Server is free software: you can redistribute it and/or modify
   it under the terms of the GNU Lesser General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
 
-  Paladin is distributed in the hope that it will be useful,
+  S-Update-Server is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU Lesser General Public License for more details.
 
   You should have received a copy of the GNU Lesser General Public License
-  along with Paladin.  If not, see <http://www.gnu.org/licenses/>.
+  along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Paladin - Error</title>
+    <title>S-Update-Server - Error</title>
 
     <!-- Bootstrap -->
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- The Paladin Icon -->
-    <link rel="icon" href="{{ getResource('ErrorPage', 'icon.png', true) }}" />
+    <!-- The S-Update Icon -->
+    <link rel="icon" href="{{ getResource('shared', 'icon.png', true) }}" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- ErrorPage CSS -->
     <link href="{{ getResource('ErrorPage', 'style.css', true) }}" rel="stylesheet">
-  </head>
 
-  <body>
+    <!-- S-Update-Server global CSS -->
+    <link href="{{ getResource('shared', 'global.css', true) }}" rel="stylesheet">
+</head>
+
+<body>
     <div class='fulldiv'>
-      <div class="center">
-        <center>
-          <img src="{{ getResource('ErrorPage', 'logo.png', true) }}" />
+        <div class="center">
+            <center>
+                <img src="{{ getResource('shared', 'logo.png', true) }}" />
 
-          <br />
-          <br />
-          <br />
-          <br />
+                <br />
+                <br />
+                <br />
 
-          <h1>{{ title }}</h1>
+                <h1>{{ title }}</h1>
 
-          <br/>
+                <br/>
 
-          <p>
-            {{ message }}
-          </p>
-        </center>
-      </div>
+                <p>
+                    {{ message }}
+
+                    <br />
+                    <br />
+                    <br />
+
+                    <div>
+                        <button id="home" style="margin-right: 30px;">Accueil</button>
+                        <button id="prev-page">Page précédente</button>
+                    </div>
+                </p>
+            </center>
+        </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  </body>
+</body>
 </html>
