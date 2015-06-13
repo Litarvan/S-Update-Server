@@ -1,0 +1,16 @@
+{
+    "name": "theshark34/s-update-server",
+    "description": "The S-Update update library server",
+    "type": "project",
+    "license": "LGPL-3",
+    "authors": [
+        {
+            "name": "TheShark34",
+            "email": "adrien1975@live.fr"
+        }
+    ],
+    "minimum-stability": "beta",
+    "require": {
+        "twig/twig": "~1.0"
+    }
+}
