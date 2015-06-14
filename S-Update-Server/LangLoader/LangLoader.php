@@ -33,12 +33,12 @@ class LangLoader {
     /**
      * The file where the current lang is saved
      */
-    public static const $CURRENT_LANG_FILE = "../current.lang";
+    const CURRENT_LANG_FILE = "../current.lang";
 
     /**
      * The default language
      */
-    public static const $DEFAULT_LANG = "en_US";
+    const DEFAULT_LANG = "en_US";
 
     /**
      * The current LangLoader instance
@@ -71,7 +71,7 @@ class LangLoader {
      */
     public function start() {
         // Getting the current lang
-        $currentLang = getCurrentLang();
+        $currentLang = self::getCurrentLang();
 
         // Loading it
         $this->loadLang($currentLang);
@@ -91,7 +91,7 @@ class LangLoader {
         $this->currentLang = $lang;
 
         // Saving the lang in the current lang file
-        file_put_contents($CURRENT_LANG_FILE, $lang);
+        file_put_contents(self::CURRENT_LANG_FILE, $lang);
     }
 
     /**
@@ -103,14 +103,14 @@ class LangLoader {
         // If the current lang isn't defined
         if(!$this->currentLang)
             // If the current lang file doesn't exist
-            if(!file_exists(self::$CURRENT_LANG_FILE))
+            if(!file_exists(self::CURRENT_LANG_FILE))
                 // Returning the default lang
-                $this->currentLang = self::$DEFAULT_LANG;
+                $this->currentLang = self::DEFAULT_LANG;
 
             // Else if the current lang file exists
             else
                 // Setting the current lang as its content
-                $this->currentLang = file_get_contents(self::$CURRENT_LANG_FILE);
+                $this->currentLang = file_get_contents(self::CURRENT_LANG_FILE);
         
         // Returning the current lang
         return $this->currentLang;
@@ -118,30 +118,33 @@ class LangLoader {
 
     private function loadLang($lang) {
         // Getting the path of the lang file
-        $langFilePath = "../lang/" . $lang . ".lang";
-
+        $langFilePath = "S-Update-Server/lang/" . $lang . ".lang";
+        
         // If the lang file doesn't exist
         if(!file_exists($langFilePath)) {
             // And no language was loaded
-            if(!$loadedLanguage)
+            if(!$this->loadedLanguage)
                 // Setting the loaded language as an empty array
-                $loadedLanguage = array();
+                $this->loadedLanguage = array();
 
             // Stopping
             return;
         }
 
         // Getting the lang file
-        $langFile = fopen($langFilePath);
+        $langFile = fopen($langFilePath, "r");
 
         // Reading it line per line
-        while (($line = fgets($handle)) !== false) {
+        while (($line = fgets($langFile)) !== false) {
+            // Splitting the line with the '='
             $splittedLine = explode("=", $line);
-            $loadedLanguage[$splittedLine[0]] = $splittedLine[1];
+
+            // Saving with the key as all before the '=', and the string to all after the '='
+            $this->loadedLanguage[$splittedLine[0]] = $splittedLine[1];
         }
 
         // Closing the file
-        fclose($langFilePath);
+        fclose($langFile);
     }
 
     /**
@@ -153,7 +156,7 @@ class LangLoader {
      */
     public function getLangText($key) {
         // Gets the text by the key, or return null if not found
-        $text = $loadedLanguage[$key] or return "";
+        $text = $this->loadedLanguage[$key];
 
         // Returning the load text
         return $text;

@@ -31,7 +31,7 @@ require 'Paladin/ThemeLoader.php';
 
 // Loading S-Update-Server
 require 'S-Update-Server/LangLoader/LangLoader.php';
-require 'S-Update-Server/LangLoader/LangLoaderTwigExtension.php'
+require 'S-Update-Server/LangLoader/LangLoaderTwigExtension.php';
 
 // TODO: Remove this line, only for dev
 Paladin\Paladin::setAutoreloadEnabled(true);

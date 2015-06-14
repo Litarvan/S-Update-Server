@@ -26,7 +26,7 @@
     <title>S-Update-Server - Error</title>
 
     <!-- Bootstrap -->
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ getResource('shared', 'css/bootstrap.min.css', true) }}" rel="stylesheet">
 
     <!-- The S-Update Icon -->
     <link rel="icon" href="{{ getResource('shared', 'icon.png', true) }}" />
@@ -42,7 +42,7 @@
     <link href="{{ getResource('ErrorPage', 'style.css', true) }}" rel="stylesheet">
 
     <!-- S-Update-Server global CSS -->
-    <link href="{{ getResource('shared', 'global.css', true) }}" rel="stylesheet">
+    <link href="{{ getResource('shared', 'css/global.css', true) }}" rel="stylesheet">
 </head>
 
 <body>
@@ -60,10 +60,11 @@
                 <br/>
 
                 <p>
-                    {% "404" in message %}
-                      {{ getLangText("error.404") }}
+                    {% if "404" in title %}
+                      {{ getLangText('error.404') }}
                     {% else %}
                       {{ message }}
+                    {% endif %}
 
                     <br />
                     <br />
@@ -79,8 +80,8 @@
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="{{ getResource('shared', 'js/jquery-1.11.3.js', false) }}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="{{ getResource('shared', 'js/bootstrap.min.js', false) }}"></script>
 </body>
 </html>
