@@ -30,13 +30,13 @@ class Index extends \Paladin\Route {
 
     public function onCalling($args) {
         // Getting the Paladin version
-        $paladinVersion = file_get_contents("../paladin.version");
+        $paladinVersion = file_get_contents("paladin.version");
 
         // Getting the Twig version
         $twigVersion = "1.18";
 
         // Getting the S-Update-Server version
-        $serverVersion = file_get_contents("../s-update-server.version");
+        $serverVersion = file_get_contents("s-update-server.version");
 
         // Displaying the index page
         \Paladin\Paladin::getPageLoader()->displayPage("\\SUpdateServer\\Pages", "Index", array(

@@ -60,8 +60,29 @@ class RouteLoader {
    * @return An array with 'name' as the name of the route and 'args' as another array with the arguments
    */
   public function getCurrentRouteFromURL($url) {
-    // Splitting the URL with /
-    $splittedURL = explode('/', str_replace(dirname($_SERVER['SCRIPT_FILENAME']) . "/", "", $_SERVER['DOCUMENT_ROOT'].substr($url, 1)));
+    // Trimming the URL with /
+    $completeRoute = trim($_SERVER['REQUEST_URI'], '/');
+
+    // If the trimmed url starts with / but the script name not
+    if(substr($completeRoute, 0, 1) == "/" && substr($_SERVER['SCRIPT_NAME'], 0, 1) != "/")
+      // Deleting the / in the start of the url
+      $completeRoute = $substr($completeRoute, 1);
+
+    // Else if the url doesn't start with / but the script name do
+    else if(substr($completeRoute, 0, 1) != "/" && substr($_SERVER['SCRIPT_NAME'], 0, 1) == "/")
+      // Adding / to the url
+      $completeRoute = "/" . $completeRoute;
+
+    // Deleting the current script parent folder of the url
+    $completeRoute = str_replace(dirname($_SERVER['SCRIPT_NAME']), "", $completeRoute);
+
+    // If the url starts with /
+    if(substr($completeRoute, 0, 1) == "/")
+      // Deleting it
+      $completeRoute = substr($completeRoute, 1);
+
+    // The splitting the url with /
+    $splittedURL = explode("/", $completeRoute);
 
     // The route name is the first index
     $route['name'] = $splittedURL[0];

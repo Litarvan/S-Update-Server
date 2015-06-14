@@ -68,8 +68,8 @@ class Paladin {
   public static function getRootFolder() {
     if(!isset(self::$rootFolder))
       self::$rootFolder = "/" . str_replace($_SERVER['DOCUMENT_ROOT'], "", dirname($_SERVER['SCRIPT_FILENAME'])) . "/";
-    
-    return self::$rootFolder;
+
+    return str_replace("//", "/", self::$rootFolder);
   }
 
   /**

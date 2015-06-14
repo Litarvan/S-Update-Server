@@ -19,25 +19,35 @@
  * along with Paladin.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Paladin;
+namespace SUpdateServer\Pages;
 
 /**
- * A simple URL route
+ * An error page
  *
  * @author TheShark34
- * @package Paladin
+ * @package S-Update-Server\Pages
  * @version 1.0.0-BETA
  */
-abstract class Route {
+class Index extends \Paladin\Page {
 
-  /**
-   * Called when the route is called
-   *
-   * @param $args
-   *            The arguments of the route, every things (excepted the route name and the website url) of the url separated by /
-   *            By exemple for this url : http://foo.bar/this/is/a/url The route name would be this, and the arguments 'is', 'a', and 'url'
-   */
-  public abstract function onCalling($args);
+  public function getName() {
+    return "Index";
+  }
 
+  public function getMainPage() {
+    return "Index.php.twig";
+  }
+
+  public function isThemable() {
+    return true;
+  }
+
+  public function constructTwigArray($args) {
+    return array(
+      "paladinVersion" => $args["paladinVersion"],
+      "twigVersion" => $args["twigVersion"],
+      "serverVersion" => $args["serverVersion"]
+    );
+  }
+  
 }
-?>
