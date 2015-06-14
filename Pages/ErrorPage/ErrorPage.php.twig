@@ -71,8 +71,8 @@
                     <br />
 
                     <div>
-                        <button id="home" style="margin-right: 30px;">{{ getLangText('home') }}</button>
-                        <button id="prev-page">{{ getLangText('prevpage') }}</button>
+                        <button id="home" style="margin-right: 30px;" onclick="window.location.href='{{ getHome() }}';">{{ getLangText('home') }}</button>
+                        <button id="prev-page" onclick="history.go(-1);">{{ getLangText('prevpage') }}</button>
                     </div>
                 </p>
             </center>

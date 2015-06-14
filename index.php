@@ -32,6 +32,7 @@ require 'Paladin/ThemeLoader.php';
 // Loading S-Update-Server
 require 'S-Update-Server/LangLoader/LangLoader.php';
 require 'S-Update-Server/LangLoader/LangLoaderTwigExtension.php';
+require 'S-Update-Server/SUpdateServerTwigExtension.php';
 
 // TODO: Remove this line, only for dev
 Paladin\Paladin::setAutoreloadEnabled(true);
@@ -41,6 +42,9 @@ SUpdateServer\LangLoader\LangLoader::create();
 
 // Adding the LangLoader Twig Extension to Twig
 Paladin\Paladin::getTwig()->addExtension(new SUpdateServer\LangLoader\LangLoaderTwigExtension());
+
+// Adding the SUpdate Twig Extension to Twig
+Paladin\Paladin::getTwig()->addExtension(new SUpdateServer\SUpdateServerTwigExtension());
 
 // Load the route for the current URL
 Paladin\Paladin::getRouteLoader()->loadRoute();
