@@ -60,15 +60,18 @@
                 <br/>
 
                 <p>
-                    {{ message }}
+                    {% "404" in message %}
+                      {{ getLangText("error.404") }}
+                    {% else %}
+                      {{ message }}
 
                     <br />
                     <br />
                     <br />
 
                     <div>
-                        <button id="home" style="margin-right: 30px;">Accueil</button>
-                        <button id="prev-page">Page précédente</button>
+                        <button id="home" style="margin-right: 30px;">{{ getLangText('home') }}</button>
+                        <button id="prev-page">{{ getLangText('prevpage') }}</button>
                     </div>
                 </p>
             </center>
