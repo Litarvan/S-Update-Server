@@ -41,7 +41,6 @@ class Index extends \Paladin\Route {
         // Displaying the index page
         \Paladin\Paladin::getPageLoader()->displayPage("\\SUpdateServer\\Pages", "Index", array(
                 "paladinVersion" => $paladinVersion,
-                "twigVersion" => $twigVersion,
                 "serverVersion" => $serverVersion
             ));
     }
