@@ -38,13 +38,17 @@ class Index extends \Paladin\Route {
         // Getting the S-Update-Server version
         $serverVersion = file_get_contents("s-update-server.version");
 
+        // Getting the server state
+        $serverEnabled = \SUpdateServer\ServerState::isEnabled();
+
         // Displaying the index page
         \Paladin\Paladin::getPageLoader()->displayPage("\\SUpdateServer\\Pages", "Index", array(
                 "paladinVersion" => $paladinVersion,
-                "serverVersion" => $serverVersion
+                "serverVersion" => $serverVersion,
+                "serverEnabled" => $serverEnabled
             ));
     }
 
 }
-    
+
 ?>

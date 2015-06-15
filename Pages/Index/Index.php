@@ -45,8 +45,9 @@ class Index extends \Paladin\Page {
   public function constructTwigArray($args) {
     return array(
       "paladinVersion" => $args["paladinVersion"],
-      "serverVersion" => $args["serverVersion"]
+      "serverVersion" => $args["serverVersion"],
+      "serverEnabled" => $args["serverEnabled"] ? "true" : "false"
     );
   }
-  
+
 }

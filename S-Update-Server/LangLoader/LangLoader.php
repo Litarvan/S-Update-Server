@@ -29,11 +29,11 @@ namespace SUpdateServer\LangLoader;
  * @version 1.0.0-BETA
  */
 class LangLoader {
-  
+
     /**
      * The file where the current lang is saved
      */
-    const CURRENT_LANG_FILE = "../current.lang";
+    const CURRENT_LANG_FILE = "S-Update-Server/current.lang";
 
     /**
      * The default language
@@ -64,7 +64,7 @@ class LangLoader {
 
         // Starting it
         self::$langLoader->start();
-    } 
+    }
 
     /**
      * Start LangLoader, get the current lang and load it
@@ -76,7 +76,7 @@ class LangLoader {
         // Loading it
         $this->loadLang($currentLang);
     }
-  
+
     /**
      * Sets the current lang
      *
@@ -111,7 +111,7 @@ class LangLoader {
             else
                 // Setting the current lang as its content
                 $this->currentLang = file_get_contents(self::CURRENT_LANG_FILE);
-        
+
         // Returning the current lang
         return $this->currentLang;
     }
@@ -119,7 +119,7 @@ class LangLoader {
     private function loadLang($lang) {
         // Getting the path of the lang file
         $langFilePath = "S-Update-Server/lang/" . $lang . ".lang";
-        
+
         // If the lang file doesn't exist
         if(!file_exists($langFilePath)) {
             // And no language was loaded

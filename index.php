@@ -23,7 +23,7 @@
 require 'vendor/autoload.php';
 require 'Paladin/Page.php';
 require 'Paladin/PageLoader.php';
-require 'Paladin/Paladin.php'; 
+require 'Paladin/Paladin.php';
 require 'Paladin/PaladinTwigExtension.php';
 require 'Paladin/Route.php';
 require 'Paladin/RouteLoader.php';
@@ -33,6 +33,7 @@ require 'Paladin/ThemeLoader.php';
 require 'S-Update-Server/LangLoader/LangLoader.php';
 require 'S-Update-Server/LangLoader/LangLoaderTwigExtension.php';
 require 'S-Update-Server/SUpdateServerTwigExtension.php';
+require 'S-Update-Server/ServerState.php';
 
 // TODO: Remove this line, only for dev
 Paladin\Paladin::setAutoreloadEnabled(true);

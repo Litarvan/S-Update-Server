@@ -14,3 +14,12 @@ button {
 button:hover {
     background-color: rgba(255, 255, 255, 0.25);
 }
+
+.fulldiv {
+    width: 100%;
+    height: auto;
+    bottom: 0px;
+    top: 0px;
+    left: 0;
+    position: absolute;
+}

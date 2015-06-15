@@ -17,20 +17,37 @@
  * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-p {
-  font-size: 25px;
-}
-
-h1 {
-  font-size: 85px;
+body {
+    background-color: #000;
 }
 
 .center {
     position: absolute;
-    width: 950px;
-    height: 275px;
+    width: 250px;
+    height: 250px;
     top: 50%;
     left: 50%;
-    margin-left: -475px;
-    margin-top: -250px;
+    margin-left: -125px;
+    margin-top: -125px;
+}
+
+#canvas {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    top: 50%;
+    left: 50%;
+    margin-left: -175px;
+    margin-top: -175px;
+}
+
+#sharklogo {
+    position: absolute;
+    width: 125px;
+    height: 125px;
+    top: 50%;
+    left: 50%;
+    margin-left: -62px;
+    margin-top: -62px;
+    z-index: 1;
 }
