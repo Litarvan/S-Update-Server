@@ -29,6 +29,10 @@ html, body {
     transition: background 1.5s linear;
 }
 
+body {
+    background-image: none;
+}
+
 .center {
     position: absolute;
     width: 250px;
@@ -57,5 +61,13 @@ html, body {
     left: 50%;
     margin-left: -62px;
     margin-top: -62px;
-    z-index: 1;
+}
+
+#textlogo {
+    margin-left: -57px;
+}
+
+#infos {
+    display: none;
+    font-size: 18px;
 }

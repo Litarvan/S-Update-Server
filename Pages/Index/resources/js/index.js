@@ -12,7 +12,13 @@ function startAnimation() {
         $('#logo').fadeIn("slow");
     });
 
+    // Starting the canvas animations
     drawCanvas();
+
+    // If the server is activated
+    if(serverActivated)
+        // Doing the start animation
+        doServerStartAnimation();
 }
 
 function drawCanvas() {
@@ -190,12 +196,38 @@ function desactivateServer() {
 
 function doServerStartAnimation() {
     // Changing background
-    $(document.body).css({"background-image": "url(Pages/shared/resources/background.png"});
+    document.body.style.backgroundImage = "url(Pages/shared/resources/background.png)";
+
+    // Moving the logo
+    $("#centerDiv").animate({ top: '40%' }, function() {
+        // Getting the infos div
+        var infos = document.getElementById("infos");
+
+        // Printing the jQuery version in it
+        infos.innerHTML = infos.innerHTML.replace("jQueryVersion", jQuery.fn.jquery);
+
+        // Fading the text logo
+        $("#textlogo").fadeIn();
+
+        // Fading it
+        $("#infos").fadeIn();
+    });
+
+
 }
 
 function doServerStopAnimation() {
-    // Changing background
-    $(document.body).css({"background-image": "none"});
+    // Fading out the infos
+    $("#infos").fadeOut();
+
+    // Fading out the text logo
+    $("#textlogo").fadeOut(function() {
+        // Moving the logo
+        $("#centerDiv").animate({ top: '50%'});
+
+        // Removing the background
+        document.body.style.backgroundImage = "none";
+    });
 }
 
 function sendRequest(request) {

@@ -47,11 +47,19 @@
 
 <body>
     <div class='fulldiv'>
-        <div class="center">
+        <div class="center" id="centerDiv">
             <center>
                 <img id="sharklogo" src="{{ getResource('Index', 'images/sharklogo.png', true) }}" />
                 <canvas id="canvas" width="350" height="350"></canvas>
                 <img id="logo" style="display: none;" src="{{ getResource('shared', 'icon.png', true) }}" />
+                <img id="textlogo" style="display: none;" src="{{ getResource('Index', 'images/textlogo.png', true) }}" />
+
+                <div id="infos">
+                    Paladin : {{ paladinVersion }}<br />
+                    Twig : {{ constant('Twig_Environment::VERSION') }}<br />
+                    jQuery : jQueryVersion<br />
+                    Server : {{ serverVersion }}<br />
+                </div>
             </center>
         </div>
     </div>
