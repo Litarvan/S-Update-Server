@@ -199,7 +199,7 @@ function doServerStartAnimation() {
     document.body.style.backgroundImage = "url(Pages/shared/resources/background.png)";
 
     // Moving the logo
-    $("#centerDiv").animate({ top: '40%' }, function() {
+    $("#centerDiv").animate({ top: '35%' }, function() {
         // Getting the infos div
         var infos = document.getElementById("infos");
 

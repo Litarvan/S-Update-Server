@@ -118,7 +118,7 @@ class LangLoader {
 
     private function loadLang($lang) {
         // Getting the path of the lang file
-        $langFilePath = "S-Update-Server/lang/" . $lang . ".lang";
+        $langFilePath = "S-Update-Server/lang/" . trim($lang) . ".lang";
 
         // If the lang file doesn't exist
         if(!file_exists($langFilePath)) {
