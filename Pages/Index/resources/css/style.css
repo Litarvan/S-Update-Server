@@ -71,3 +71,43 @@ body {
     display: none;
     font-size: 18px;
 }
+
+#left-buttons {
+    float: left;
+    margin-left: 8%;
+}
+
+#right-buttons {
+    float: right;
+    margin-right: 8%;
+}
+
+.button {
+    width: 350px;
+    height: 200px;
+    text-align: center;
+    color: white;
+}
+
+.button:hover {
+    background-color: rgba(255, 255, 255, 0.20);
+}
+
+.top-button {
+    margin-top: 20%;
+}
+
+.bottom-button {
+    margin-top: 40%;
+}
+
+.button-icon {
+    margin-top: 35px;
+}
+
+.button-label {
+    margin-top: 20px;
+    font-size: 18px;
+    font-family: Nexa-Bold, Arial, sans-serif;
+    font-style: bold;
+}

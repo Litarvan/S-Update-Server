@@ -47,6 +47,22 @@
 
 <body>
     <div class='fulldiv'>
+        <div id="left-buttons">
+            <a href="dashboard">
+                <div id="dashboard" class="button top-button" style="display: none;">
+                    <img id="dashboard-icon" class="button-icon" src="{{ getResource('Index', 'images/dashboard.png', true) }}" />
+                    <p id="dashboard-label" class="button-label">{{ getLangText("dashboard") }}</p>
+                </div>
+            </a>
+
+            <a href="explorer">
+                <div id="file-explorer" class="button bottom-button" style="display: none;">
+                    <img id="file-explorer-icon" class="button-icon" src="{{ getResource('Index', 'images/file-explorer.png', true) }}" />
+                    <p id="file-explorer-label" class="button-label">{{ getLangText("file-explorer") }}</p>
+                </div>
+            </a>
+        </div>
+
         <div class="center" id="centerDiv">
             <center>
                 <img id="sharklogo" src="{{ getResource('Index', 'images/sharklogo.png', true) }}" />
@@ -57,12 +73,28 @@
                 <div id="infos">
                     <b>{{ getLangText("status") }} : <span style="color: #00ff00">{{ getLangText("working") }}</span></b><br /><br />
 
-                    Paladin : {{ paladinVersion }}<br />
-                    Twig : {{ constant('Twig_Environment::VERSION') }}<br />
-                    jQuery : jQueryVersion<br />
-                    Server : {{ serverVersion }}<br />
+                    Paladin : <span style="color: #00ff00">{{ paladinVersion }}</span><br />
+                    Twig : <span style="color: #00ff00">{{ constant('Twig_Environment::VERSION') }}</span><br />
+                    jQuery : <span style="color: #00ff00">jQueryVersion</span><br />
+                    Server : <span style="color: #00ff00">{{ serverVersion }}</span><br />
                 </div>
             </center>
+        </div>
+
+        <div id="right-buttons">
+            <a href="settings">
+                <div id="settings" class="button top-button" style="display: none;">
+                    <img id="settings-icon" class="button-icon" src="{{ getResource('Index', 'images/settings.png', true) }}" />
+                    <p id="settings-label" class="button-label">{{ getLangText("settings") }}</p>
+                </div>
+            </a>
+
+            <a href="about">
+                <div id="about" class="button bottom-button" style="display: none;">
+                    <img id="about-icon" class="button-icon" src="{{ getResource('Index', 'images/about.png', true) }}" />
+                    <p id="about-label" class="button-label">{{ getLangText("about") }}</p>
+                </div>
+            </a>
         </div>
     </div>
 
@@ -72,7 +104,7 @@
     <script src="{{ getResource('shared', 'js/bootstrap.min.js', false) }}"></script>
 
     <!-- Index JS script -->
-    <script src="{{ getResource('Index', 'js/index.js', true)}}"></script>
+    <script src="{{ getResource('Index', 'js/index.js', false)}}"></script>
 
     <!-- Starting the JS script -->
     <script>

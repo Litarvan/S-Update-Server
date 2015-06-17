@@ -2,15 +2,11 @@ var circlesActivated = false;
 var serverActivated;
 
 function startAnimation() {
-    jQuery(function() {
-        // Slowing fading out the shark avatar
-        $('#sharklogo').fadeOut("slow");
-    });
+    // Slowing fading out the shark avatar
+    $('#sharklogo').fadeOut("slow");
 
-    jQuery(function() {
-        // Slowing fading in the logo after 1 second
-        $('#logo').fadeIn("slow");
-    });
+    // Slowing fading in the logo after 1 second
+    $('#logo').fadeIn("slow");
 
     // Starting the canvas animations
     drawCanvas();
@@ -47,7 +43,7 @@ function drawCanvas() {
             // Setting opacity to 0.25
             ctx.globalAlpha = 0.25;
 
-            // If the radius is bigger than 125px
+            // If the radius is bigger than 135px
             if(radius > 135)
                 // Fading the circle out
                 ctx.globalAlpha = 0.25 - ((radius - 135) / 100);
@@ -199,7 +195,7 @@ function doServerStartAnimation() {
     document.body.style.backgroundImage = "url(Pages/shared/resources/background.png)";
 
     // Moving the logo
-    $("#centerDiv").animate({ top: '35%' }, function() {
+    $("#centerDiv").animate({ top: '32%' }, function() {
         // Getting the infos div
         var infos = document.getElementById("infos");
 
@@ -209,24 +205,36 @@ function doServerStartAnimation() {
         // Fading the text logo
         $("#textlogo").fadeIn();
 
-        // Fading it
-        $("#infos").fadeIn();
+        // Fading the infos
+        $("#infos").fadeIn(function() {
+            // Fading the buttons
+            $("#dashboard").fadeIn();
+            $("#settings").fadeIn(function() {
+                $("#file-explorer").fadeIn();
+                $("#about").fadeIn();
+            });
+        });
     });
-
-
 }
 
 function doServerStopAnimation() {
-    // Fading out the infos
-    $("#infos").fadeOut();
+    // Fading the buttons
+    $("#file-explorer").fadeOut();
+    $("#about").fadeOut(function() {
+        $("#dashboard").fadeOut();
+        $("#settings").fadeOut(function() {
+            // Fading out the infos
+            $("#infos").fadeOut();
 
-    // Fading out the text logo
-    $("#textlogo").fadeOut(function() {
-        // Moving the logo
-        $("#centerDiv").animate({ top: '50%'});
+            // Fading out the text logo
+            $("#textlogo").fadeOut(function() {
+                // Moving the logo
+                $("#centerDiv").animate({ top: '50%'});
 
-        // Removing the background
-        document.body.style.backgroundImage = "none";
+                // Removing the background
+                document.body.style.backgroundImage = "none";
+            });
+        });
     });
 }
 
