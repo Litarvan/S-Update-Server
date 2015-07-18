@@ -1,0 +1,72 @@
+<!--
+  Copyright 2015 TheShark34
+
+  This file is part of S-Update-Server.
+
+  S-Update-Server is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Lesser General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  S-Update-Server is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public License
+  along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>S-Update-Server</title>
+
+    <!-- Bootstrap -->
+    <link href="{{ getResource('shared', 'css/bootstrap.min.css', true) }}" rel="stylesheet">
+
+    <!-- The S-Update Icon -->
+    <link rel="icon" href="{{ getResource('shared', 'icon.png', true) }}" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- About CSS -->
+    <link href="{{ getResource('About', 'style.css', true) }}" rel="stylesheet">
+
+    <!-- S-Update-Server global CSS -->
+    <link href="{{ getResource('shared', 'css/global.css', true) }}" rel="stylesheet">
+</head>
+
+<body>
+    <div class='fulldiv'>
+        <div class="center">
+            <center>
+                <img src="{{ getResource('shared', 'logo.png', true) }}" />
+                <h1>S-Update-Server {{ serverVersion }}</h1>
+                <br />
+                <br />
+
+                <p>
+                    Copyright 2015 TheShark34 {{ getLangText("under-license") }} LGPL-3.0
+                    <br />
+                    <br />
+                    {{ getLangText("sources-on") }} <a href="https://github.com/TheShark34/S-Update-Server">Github</a>
+                </p>
+
+                <br />
+                <img src="{{ getResource('shared', 'sharklogo.png', true) }}" />
+                <br /><br />
+                <button id="home" style="margin-right: 30px;" onclick="window.location.href='{{ getHome() }}';">{{ getLangText('home') }}</button>
+            </center>
+        </div>
+    </div>
+</body>
+</html>
