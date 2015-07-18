@@ -162,15 +162,6 @@ class PageLoader {
       // Setting the template path to the default path
       $templatePath = $this->folder . $templatePath;
 
-    // If the template doesn't exist
-    if(!file_exists($templatePath)) {
-      // Displaying an error page
-      self::displayPage("\Paladin\Pages", "ErrorPage", array("Page mistake", "Sorry ! We can't find the twig template for the page : " . $pageInstance->getName() . " !"));
-    
-      // Stopping
-      return;
-    }
-
     // Rendering the page with Twig
     echo Paladin::getTwig()->render($templatePath, $pageInstance->constructTwigArray($args));
 

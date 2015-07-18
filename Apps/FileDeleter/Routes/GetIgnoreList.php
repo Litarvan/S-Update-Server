@@ -22,17 +22,35 @@
 use \Paladin\Route;
 
 /**
- * The Set State Route, to change the server state
+ * The GetIgnoreList Route, returns the list of the
+ * files ignored by the file deleter. These files are
+ * wrote in the ignore list file.
  *
  * @author TheShark34
- * @package S-Update-Server\Routes
+ * @package S-Update-Server\FileDeleter\Routes
  * @version 3.0.0-BETA
  */
-class SetState extends Route {
+class GetIgnoreList extends Route {
+
+    /**
+     * The list of files to ignore for the FileDeleter
+     */
+    const IGNORE_LIST_FILES = "S-Update-Server/Ignore.list";
 
     public function onCalling($args) {
-        if(sizeof($args) == 1)
-            \SUpdateServer\ServerState::setServerState($args[0]);
+        // Creating the ignore list
+        $ignoreList = array();
+
+        // Reading the ignore list
+        $file = fopen(self::IGNORE_LIST_FILES, "a+");
+
+        while (($line = fgets($file)) !== false)
+            $ignoreList[sizeof($ignoreList)] = substr($line, 0, strlen($line) - 1);
+
+        fclose($file);
+
+        // Printing the JSON encoded array
+        echo json_encode($ignoreList, JSON_PRETTY_PRINT);
     }
 
 }

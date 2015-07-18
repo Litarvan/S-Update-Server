@@ -19,35 +19,39 @@
  * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SUpdateServer\Pages;
+namespace SUpdateServer\Applications;
 
 /**
- * An error page
+ * The FileDeleter
  *
- * @author TheShark34
- * @package S-Update-Server\Pages
+ * <p>
+ *     This is application deletes all files not on the server
+ *     excepted the ones in the ignore list on the server.
+ *     Kinda bulldozer.
+ * </p>
+ *
+ * <p>
+ *   _[TT]_j__,(  <br />
+ *  (_)oooo(_)'
+ * </p>
+ *
  * @version 3.0.0-BETA
+ * @package S-Update-Server\Applications
+ * @author TheShark34
  */
-class Index extends \Paladin\Page {
+class FileDeleter extends \SUpdateServer\AppLoader\Application {
 
-  public function getName() {
-    return "Index";
-  }
+     public function getName() {
+         return "FileDeleter";
+     }
 
-  public function getMainPage() {
-    return "Index.php.twig";
-  }
+     public function preLoad() {
+     }
 
-  public function isThemable() {
-    return true;
-  }
+     public function load() {
 
-  public function constructTwigArray($args) {
-    return array(
-      "paladinVersion" => $args["paladinVersion"],
-      "serverVersion" => $args["serverVersion"],
-      "serverEnabled" => $args["serverEnabled"] ? "true" : "false"
-    );
-  }
+     }
 
-}
+ }
+
+ ?>

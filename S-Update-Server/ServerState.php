@@ -27,7 +27,7 @@ namespace SUpdateServer;
  *
  * @author TheShark34
  * @package S-Update-Server
- * @version 1.0.0-BETA
+ * @version 3.0.0-BETA
  */
 class ServerState {
 

@@ -34,6 +34,10 @@ require 'S-Update-Server/LangLoader/LangLoader.php';
 require 'S-Update-Server/LangLoader/LangLoaderTwigExtension.php';
 require 'S-Update-Server/SUpdateServerTwigExtension.php';
 require 'S-Update-Server/ServerState.php';
+require 'S-Update-Server/AppLoader/AppLoader.php';
+require 'S-Update-Server/AppLoader/Application.php';
+require 'S-Update-Server/Checking/CheckMethodLoader.php';
+require 'S-Update-Server/Checking/CheckMethod.php';
 
 // TODO: Remove this line, only for dev
 Paladin\Paladin::setAutoreloadEnabled(true);
@@ -46,6 +50,12 @@ Paladin\Paladin::getTwig()->addExtension(new SUpdateServer\LangLoader\LangLoader
 
 // Adding the SUpdate Twig Extension to Twig
 Paladin\Paladin::getTwig()->addExtension(new SUpdateServer\SUpdateServerTwigExtension());
+
+// Loading the applications
+SUpdateServer\AppLoader\AppLoader::create();
+
+// Loading the check methods
+SUpdateServer\Checking\CheckMethodLoader::create();
 
 // Load the route for the current URL
 Paladin\Paladin::getRouteLoader()->loadRoute();

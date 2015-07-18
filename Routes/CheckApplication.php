@@ -19,35 +19,23 @@
  * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SUpdateServer\Pages;
+use \Paladin\Route;
 
 /**
- * An error page
+ * The CheckApplication Route, to check if an application
+ * is present.
  *
  * @author TheShark34
- * @package S-Update-Server\Pages
+ * @package S-Update-Server\Routes
  * @version 3.0.0-BETA
  */
-class Index extends \Paladin\Page {
+class CheckApplication extends Route {
 
-  public function getName() {
-    return "Index";
-  }
-
-  public function getMainPage() {
-    return "Index.php.twig";
-  }
-
-  public function isThemable() {
-    return true;
-  }
-
-  public function constructTwigArray($args) {
-    return array(
-      "paladinVersion" => $args["paladinVersion"],
-      "serverVersion" => $args["serverVersion"],
-      "serverEnabled" => $args["serverEnabled"] ? "true" : "false"
-    );
-  }
+    public function onCalling($args) {
+        if(sizeof($args) == 1)
+            echo '{ applicationPresent: "' . (\SUpdateServer\AppLoader\AppLoader::getAppLoader()->isApplicationLoaded($args[0]) ? "true" : "false"). '"}';
+    }
 
 }
+
+?>

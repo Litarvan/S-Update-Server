@@ -26,10 +26,10 @@ namespace SUpdateServer\LangLoader;
  *
  * @author TheShark34
  * @package S-Update-Server\LangLoader
- * @version 1.0.0-BETA
+ * @version 3.0.0-BETA
  */
 class LangLoaderTwigExtension extends \Twig_Extension {
-  
+
     public function getName() {
         return "LangLoader Twig Extension";
     }
@@ -45,9 +45,9 @@ class LangLoaderTwigExtension extends \Twig_Extension {
             $getLangText
         );
     }
-  
-  
-  
+
+
+
 }
 
 ?>

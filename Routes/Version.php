@@ -19,35 +19,25 @@
  * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SUpdateServer\Pages;
+use \Paladin\Route;
 
 /**
- * An error page
+ * The Version route - Print the server version
  *
  * @author TheShark34
- * @package S-Update-Server\Pages
+ * @package S-Update-Server\Routes
  * @version 3.0.0-BETA
  */
-class Index extends \Paladin\Page {
+class Version extends Route {
 
-  public function getName() {
-    return "Index";
-  }
+    public function onCalling($args) {
+        // Setting the header
+        header("Content-Type: application/json");
 
-  public function getMainPage() {
-    return "Index.php.twig";
-  }
-
-  public function isThemable() {
-    return true;
-  }
-
-  public function constructTwigArray($args) {
-    return array(
-      "paladinVersion" => $args["paladinVersion"],
-      "serverVersion" => $args["serverVersion"],
-      "serverEnabled" => $args["serverEnabled"] ? "true" : "false"
-    );
-  }
+        // Printing the version in a JSON
+        echo json_encode(array("version" => trim(file_get_contents("s-update-server.version"))), JSON_PRETTY_PRINT);
+    }
 
 }
+
+?>

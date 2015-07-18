@@ -19,35 +19,23 @@
  * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SUpdateServer\Pages;
+use \Paladin\Route;
 
 /**
- * An error page
+ * The About Route, displays the About page.
  *
  * @author TheShark34
- * @package S-Update-Server\Pages
+ * @package S-Update-Server\Routes
  * @version 3.0.0-BETA
  */
-class Index extends \Paladin\Page {
+class About extends Route {
 
-  public function getName() {
-    return "Index";
-  }
-
-  public function getMainPage() {
-    return "Index.php.twig";
-  }
-
-  public function isThemable() {
-    return true;
-  }
-
-  public function constructTwigArray($args) {
-    return array(
-      "paladinVersion" => $args["paladinVersion"],
-      "serverVersion" => $args["serverVersion"],
-      "serverEnabled" => $args["serverEnabled"] ? "true" : "false"
-    );
-  }
+    public function onCalling($args) {
+        \Paladin\Paladin::getPageLoader()->displayPage("\\SUpdateServer\\Pages", "About", array(
+            "serverVersion" => file_get_contents("s-update-server.version")
+        ));
+    }
 
 }
+
+?>

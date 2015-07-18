@@ -26,10 +26,10 @@ namespace SUpdateServer;
  *
  * @author TheShark34
  * @package S-Update-Server
- * @version 1.0.0-BETA
+ * @version 3.0.0-BETA
  */
 class SUpdateServerTwigExtension extends \Twig_Extension {
-  
+
     public function getName() {
         return "S-Update Server Twig Extension";
     }
@@ -45,9 +45,9 @@ class SUpdateServerTwigExtension extends \Twig_Extension {
             $getHome
         );
     }
-  
-  
-  
+
+
+
 }
 
 ?>

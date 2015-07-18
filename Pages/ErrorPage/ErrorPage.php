@@ -21,6 +21,8 @@
 
 namespace Paladin\Pages;
 
+use \Paladin\Page;
+
 /**
  * An error page
  *

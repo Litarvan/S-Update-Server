@@ -19,35 +19,28 @@
  * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SUpdateServer\Pages;
+namespace SUpdateServer\Checking;
 
 /**
- * An error page
+ * The CheckMethod, on the server it makes the file list for
+ * the client if it use the same CheckMethod
  *
  * @author TheShark34
- * @package S-Update-Server\Pages
+ * @package S-Update-Server\Checking
  * @version 3.0.0-BETA
  */
-class Index extends \Paladin\Page {
+abstract class CheckMethod {
 
-  public function getName() {
-    return "Index";
-  }
+    /**
+     * Returns the name of the CheckMethod (need to be the same
+     * as the one of the client version of the CheckMethod)
+     */
+    public abstract function getName();
 
-  public function getMainPage() {
-    return "Index.php.twig";
-  }
-
-  public function isThemable() {
-    return true;
-  }
-
-  public function constructTwigArray($args) {
-    return array(
-      "paladinVersion" => $args["paladinVersion"],
-      "serverVersion" => $args["serverVersion"],
-      "serverEnabled" => $args["serverEnabled"] ? "true" : "false"
-    );
-  }
+    /**
+     * Create an array of the infos of a file, that will be parsed
+     * with the client checkmethod FileInfos class
+     */
+    public abstract function createFileInfos($file);
 
 }

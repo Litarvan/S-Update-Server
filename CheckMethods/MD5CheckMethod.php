@@ -19,35 +19,27 @@
  * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SUpdateServer\Pages;
+namespace SUpdateServer\Checking;
 
 /**
- * An error page
+ * The MD5 Check Method, uses the MD5s of the files
+ * to check them.
  *
  * @author TheShark34
- * @package S-Update-Server\Pages
+ * @package S-Update-Server\Checking
  * @version 3.0.0-BETA
  */
-class Index extends \Paladin\Page {
+ class MD5CheckMethod extends CheckMethod {
 
-  public function getName() {
-    return "Index";
-  }
+    public function getName() {
+        return "MD5 Check Method";
+    }
 
-  public function getMainPage() {
-    return "Index.php.twig";
-  }
-
-  public function isThemable() {
-    return true;
-  }
-
-  public function constructTwigArray($args) {
-    return array(
-      "paladinVersion" => $args["paladinVersion"],
-      "serverVersion" => $args["serverVersion"],
-      "serverEnabled" => $args["serverEnabled"] ? "true" : "false"
-    );
-  }
+    public function createFileInfos($file) {
+        return array(
+            "fileRelativePath" => $file,
+            "md5" => md5_file(\ListFiles::FILES_FOLDER . $file)
+        );
+    }
 
 }
