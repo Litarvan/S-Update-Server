@@ -22,28 +22,28 @@
 namespace SUpdateServer\Pages;
 
 /**
- * The Index page
+ * An error page
  *
  * @author TheShark34
  * @package S-Update-Server\Pages
  * @version 3.0.0-BETA
  */
-class Index extends \Paladin\Page {
+class Settings extends \Paladin\Page {
 
-    public function getName() {
-        return "Index";
-    }
+  public function getName() {
+    return "Settings";
+  }
 
-    public function getMainPage() {
-        return "Index.php.twig";
-    }
+  public function getMainPage() {
+    return "Settings.php.twig";
+  }
 
-    public function isThemable() {
-        return true;
-    }
+  public function isThemable() {
+    return false;
+  }
 
-    public function constructTwigArray($args) {
-        return $args;
-    }
+  public function constructTwigArray($args) {
+    return $args;
+  }
 
 }

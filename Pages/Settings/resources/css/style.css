@@ -1,5 +1,3 @@
-<?php
-
 /*
  * Copyright 2015 TheShark34
  *
@@ -19,31 +17,15 @@
  * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SUpdateServer\Pages;
+#mainDiv {
+    text-align: center;
+    margin-top: 100px;
+}
 
-/**
- * The Index page
- *
- * @author TheShark34
- * @package S-Update-Server\Pages
- * @version 3.0.0-BETA
- */
-class Index extends \Paladin\Page {
-
-    public function getName() {
-        return "Index";
-    }
-
-    public function getMainPage() {
-        return "Index.php.twig";
-    }
-
-    public function isThemable() {
-        return true;
-    }
-
-    public function constructTwigArray($args) {
-        return $args;
-    }
-
+#language {
+    border: none;
+	background-color: #444;
+	color: #FFF;
+	width: 125px;
+	height: 25px;
 }
