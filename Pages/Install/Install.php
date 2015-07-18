@@ -22,20 +22,20 @@
 namespace SUpdateServer\Pages;
 
 /**
- * The Index page
+ * The Install page
  *
  * @author TheShark34
  * @package S-Update-Server\Pages
  * @version 3.0.0-BETA
  */
-class Index extends \Paladin\Page {
+class Install extends \Paladin\Page {
 
     public function getName() {
-        return "Index";
+        return "Install";
     }
 
     public function getMainPage() {
-        return "Index.php.twig";
+        return "Install.php.twig";
     }
 
     public function isThemable() {
@@ -43,11 +43,7 @@ class Index extends \Paladin\Page {
     }
 
     public function constructTwigArray($args) {
-        return array(
-            "paladinVersion" => $args["paladinVersion"],
-            "serverVersion" => $args["serverVersion"],
-            "serverEnabled" => $args["serverEnabled"] ? "true" : "false"
-        );
+        return $args;
     }
 
 }

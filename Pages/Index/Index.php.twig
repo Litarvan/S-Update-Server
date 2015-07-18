@@ -17,13 +17,20 @@
   along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
+{#
+    Redirection script if the page was acceed manually
+    <?php
+        header("Location: GetOutOfHere");
+    ?>
+#}
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>S-Update-Server</title>
+    <title>S-Update-Server - {{ getLangText("home") }}</title>
 
     <!-- Bootstrap -->
     <link href="{{ getResource('shared', 'css/bootstrap.min.css', true) }}" rel="stylesheet">
@@ -47,7 +54,7 @@
 
 <body>
     <div class='fulldiv'>
-        <div class="center" id="centerDiv">
+        <div id="centerDiv">
             <div id="left-buttons">
                 <a href="Dashboard">
                     <div id="dashboard" class="button top-button" style="display: none;">
@@ -64,7 +71,7 @@
                 </a>
             </div>
 
-            <center>
+            <div style="text-align: center;">
                 <img id="sharklogo" src="{{ getResource('shared', 'sharklogo.png', true) }}" />
                 <canvas id="canvas" width="350" height="350"></canvas>
                 <img id="logo" style="display: none;" src="{{ getResource('shared', 'icon.png', true) }}" />
@@ -78,7 +85,10 @@
                     jQuery : <span style="color: #00ff00">jQueryVersion</span><br />
                     Server : <span style="color: #00ff00">{{ serverVersion }}</span><br />
                 </div>
-            </center>
+
+                <br />
+                <button class="submit-button" id="disconnectbutton" style="display: none;" onclick="window.location.href='Disconnect';">{{ getLangText("disconnect") }}</button>
+            </div>
 
             <div id="right-buttons">
                 <a href="Settings">

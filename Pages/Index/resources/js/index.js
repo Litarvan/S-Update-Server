@@ -125,7 +125,7 @@ function start(activated) {
         document.body.style.backgroundImage = "none";
 
     // Starting all when the page finished loading
-    window.addEventListener('load', startAnimation(serverActivated), false);
+    window.addEventListener('load', startAnimation(), false);
 
     // Getting the canvas
     var canvas = $("#canvas");
@@ -205,6 +205,9 @@ function doServerStartAnimation() {
         // Fading the text logo
         $("#textlogo").fadeIn();
 
+        // Fading the disconnect button
+        $("#disconnectbutton").fadeIn();
+
         // Fading the infos
         $("#infos").fadeIn(function() {
             // Fading the buttons
@@ -225,6 +228,9 @@ function doServerStopAnimation() {
         $("#settings").fadeOut(function() {
             // Fading out the infos
             $("#infos").fadeOut();
+
+            // Fading out the disconnect button
+            $("#disconnectbutton").fadeOut();
 
             // Fading out the text logo
             $("#textlogo").fadeOut(function() {

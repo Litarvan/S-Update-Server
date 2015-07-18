@@ -9,3 +9,7 @@ settings=Settings
 about=About
 under-license=Licensed under
 sources-on=Sources on
+login=Login
+password=Password
+disconnect=Disconnect
+bad-password=Bad password

@@ -22,20 +22,20 @@
 namespace SUpdateServer\Pages;
 
 /**
- * The Index page
+ * The Login page
  *
  * @author TheShark34
  * @package S-Update-Server\Pages
  * @version 3.0.0-BETA
  */
-class Index extends \Paladin\Page {
+class Login extends \Paladin\Page {
 
     public function getName() {
-        return "Index";
+        return "Login";
     }
 
     public function getMainPage() {
-        return "Index.php.twig";
+        return "Login.php.twig";
     }
 
     public function isThemable() {
@@ -43,11 +43,17 @@ class Index extends \Paladin\Page {
     }
 
     public function constructTwigArray($args) {
-        return array(
-            "paladinVersion" => $args["paladinVersion"],
-            "serverVersion" => $args["serverVersion"],
-            "serverEnabled" => $args["serverEnabled"] ? "true" : "false"
-        );
+        if($args['badPassword'])
+            return array(
+                "drawMessage" => true,
+                "message" => "bad-password",
+                "serverActivated" => $args['serverActivated']
+            );
+        else
+            return array(
+                "drawMessage" => false,
+                "serverActivated" => $args['serverActivated']
+            );
     }
 
 }

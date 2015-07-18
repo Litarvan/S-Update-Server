@@ -33,7 +33,7 @@ body {
     background-image: none;
 }
 
-.center {
+#centerDiv {
     position: absolute;
     width: 250px;
     height: 250px;

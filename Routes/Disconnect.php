@@ -19,35 +19,25 @@
  * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SUpdateServer\Pages;
+use \Paladin\Route;
 
 /**
- * The Index page
+ * The Disconnect Route, disconnect the user, then redirect him
  *
  * @author TheShark34
- * @package S-Update-Server\Pages
+ * @package S-Update-Server\Routes
  * @version 3.0.0-BETA
  */
-class Index extends \Paladin\Page {
+class Disconnect extends Route {
 
-    public function getName() {
-        return "Index";
-    }
+    public function onCalling($args) {
+        // Disconnecting the player
+        $_SESSION['logged'] = false;
 
-    public function getMainPage() {
-        return "Index.php.twig";
-    }
-
-    public function isThemable() {
-        return true;
-    }
-
-    public function constructTwigArray($args) {
-        return array(
-            "paladinVersion" => $args["paladinVersion"],
-            "serverVersion" => $args["serverVersion"],
-            "serverEnabled" => $args["serverEnabled"] ? "true" : "false"
-        );
+        // Redirecting him to the login page
+        header("Location: Login");
     }
 
 }
+
+?>

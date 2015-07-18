@@ -1,4 +1,5 @@
 <!--
+  Copyright 2015 TheShark34
 
   This file is part of S-Update-Server.
 
@@ -29,7 +30,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>S-Update-Server - Error</title>
+    <title>S-Update-Server - {{ getLangText("login") }}</title>
 
     <!-- Bootstrap -->
     <link href="{{ getResource('shared', 'css/bootstrap.min.css', true) }}" rel="stylesheet">
@@ -44,49 +45,45 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <!-- ErrorPage CSS -->
-    <link href="{{ getResource('ErrorPage', 'style.css', true) }}" rel="stylesheet">
+    <!-- Login CSS -->
+    <link href="{{ getResource('Login', 'css/style.css', true) }}" rel="stylesheet">
 
     <!-- S-Update-Server global CSS -->
     <link href="{{ getResource('shared', 'css/global.css', true) }}" rel="stylesheet">
+
+    {# Setting the background black if the server is not activated #}
+    {% if not serverActivated %}
+        <style>
+            html, body {
+                background-image: none;
+                background: black;
+            }
+        </style>
+    {% endif %}
 </head>
 
 <body>
     <div class='fulldiv'>
-        <div class="center">
-            <center>
-                <img src="{{ getResource('shared', 'logo.png', true) }}" />
+        <div class="center" id="centerDiv">
+            <img src="{{ getResource("shared", "logo.png", false) }}" />
 
+            <form method="post" target="">
+                <label for="password">{{ getLangText("password") }}</label> : <input class="text-field" type="password" name="password" id="password" required/>
                 <br />
                 <br />
-                <br />
+                <input class="submit-button" type="submit" value="{{ getLangText("login") }}" />
+            </form>
 
-                <h1>{{ title }}</h1>
+            <br />
 
-                <br/>
-
-                <p>
-                    {% if "404" in title %}
-                      {{ getLangText('error.404') }}
-                    {% else %}
-                      {{ message }}
-                    {% endif %}
-
-                    <br />
-                    <br />
-                    <br />
-
-                    <div>
-                        <button id="home" style="margin-right: 30px;" onclick="window.location.href='{{ getHome() }}';">{{ getLangText('home') }}</button>
-                        <button id="prev-page" onclick="history.go(-1);">{{ getLangText('prevpage') }}</button>
-                    </div>
-                </p>
-            </center>
+            {% if drawMessage %}
+                <span style="color: red">{{ getLangText(message) }}</span>
+            {% endif %}
         </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="{{ getResource('shared', 'js/jquery-1.11.3.js', false) }}"></script>
+    <script src="{{ getResource('shared', 'js/jquery-1.11.3.min.js', false) }}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{{ getResource('shared', 'js/bootstrap.min.js', false) }}"></script>
 </body>

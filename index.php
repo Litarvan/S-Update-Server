@@ -38,6 +38,7 @@ require 'S-Update-Server/AppLoader/AppLoader.php';
 require 'S-Update-Server/AppLoader/Application.php';
 require 'S-Update-Server/Checking/CheckMethodLoader.php';
 require 'S-Update-Server/Checking/CheckMethod.php';
+require 'S-Update-Server/SessionManager.php';
 
 // TODO: Remove this line, only for dev
 Paladin\Paladin::setAutoreloadEnabled(true);
@@ -57,7 +58,7 @@ SUpdateServer\AppLoader\AppLoader::create();
 // Loading the check methods
 SUpdateServer\Checking\CheckMethodLoader::create();
 
-// Load the route for the current URL
-Paladin\Paladin::getRouteLoader()->loadRoute();
+// Loading the session
+SUpdateServer\SessionManager::create();
 
 ?>

@@ -1,4 +1,5 @@
 <!--
+  Copyright 2015 TheShark34
 
   This file is part of S-Update-Server.
 
@@ -29,7 +30,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>S-Update-Server - Error</title>
+    <title>S-Update-Server - {{ getLangText("login") }}</title>
 
     <!-- Bootstrap -->
     <link href="{{ getResource('shared', 'css/bootstrap.min.css', true) }}" rel="stylesheet">
@@ -44,50 +45,44 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <!-- ErrorPage CSS -->
-    <link href="{{ getResource('ErrorPage', 'style.css', true) }}" rel="stylesheet">
-
     <!-- S-Update-Server global CSS -->
     <link href="{{ getResource('shared', 'css/global.css', true) }}" rel="stylesheet">
+
+    <!-- Login CSS -->
+    <link href="{{ getResource('Install', 'css/style.css', true) }}" rel="stylesheet">
+
+    <!-- Lato Google Font -->
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
     <div class='fulldiv'>
-        <div class="center">
-            <center>
-                <img src="{{ getResource('shared', 'logo.png', true) }}" />
+        <div class="center" id="centerDiv">
+            <span id="textspan">Loading</span>
 
-                <br />
-                <br />
-                <br />
+            <img onclick="frenchSelected()" id="frenchflag" src="{{ getResource("Install", "images/france.png", true) }}" />
+            <img onclick="englishSelected()" id="ukflag" src="{{ getResource("Install", "images/uk.png", true) }}" />
 
-                <h1>{{ title }}</h1>
+            <div id="formDiv">
+                <form id="form" method="post" target="">
+                    <input id="language" style="display: none;" type="text" name="language" id="language" />
 
-                <br/>
-
-                <p>
-                    {% if "404" in title %}
-                      {{ getLangText('error.404') }}
-                    {% else %}
-                      {{ message }}
-                    {% endif %}
-
-                    <br />
-                    <br />
-                    <br />
-
-                    <div>
-                        <button id="home" style="margin-right: 30px;" onclick="window.location.href='{{ getHome() }}';">{{ getLangText('home') }}</button>
-                        <button id="prev-page" onclick="history.go(-1);">{{ getLangText('prevpage') }}</button>
-                    </div>
-                </p>
-            </center>
+                    <input class="text-field" placeholder="Password" style="display: none;" type="password" name="password" id="password" required/><br />
+                    <input class="text-field" placeholder="Validation Password" style="display: none;" type="password" name="vpassword" id="vpassword" required/><br /><br />
+                </form>
+                <button onclick="finishConfig()" style="display: none" class="submit-button" id="sub">Finish</button><br /><br />
+                <span id="error"></span>
+            </div>
         </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="{{ getResource('shared', 'js/jquery-1.11.3.js', false) }}"></script>
+    <script src="{{ getResource('shared', 'js/jquery-1.11.3.min.js', false) }}"></script>
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{{ getResource('shared', 'js/bootstrap.min.js', false) }}"></script>
+
+    <!-- The Install JS -->
+    <script src="{{ getResource('Install', 'js/install.js', false)}}"></script>
 </body>
 </html>

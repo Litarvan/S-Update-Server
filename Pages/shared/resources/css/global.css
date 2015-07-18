@@ -23,3 +23,19 @@ button:hover {
     left: 0;
     position: absolute;
 }
+
+.submit-button {
+	border: none;
+	background-color: #444;
+	color: #FFF;
+	width: 150px;
+	height: 35px;
+}
+
+.text-field {
+	margin-bottom: 10px;
+	width: 250px;
+	height: 30px;
+	border: none;
+	background-color: #444;
+}

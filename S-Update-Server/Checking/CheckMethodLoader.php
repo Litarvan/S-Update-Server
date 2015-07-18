@@ -71,8 +71,8 @@ class CheckMethodLoader {
 
         // For each file in the folder
         for($i = 0; $i < count($checkMethods); $i++) {
-            // If it is the current/parent folder
-            if(trim($checkMethods[$i]) == "." || trim($checkMethods[$i]) == "..")
+            // If it is the current/parent folder, or it is .htaccess
+            if(trim($checkMethods[$i]) == "." || trim($checkMethods[$i]) == ".." || trim($checkMethods[$i]) == ".htaccess")
                 // Continuing the loop
                 continue;
 

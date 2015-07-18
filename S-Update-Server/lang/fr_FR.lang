@@ -9,3 +9,7 @@ settings=Réglages
 about=A Propos
 under-license=Sous license
 sources-on=Sources sur
+login=Connexion
+password=Mot de passe
+disconnect=Se Déconnecter
+bad-password=Mauvais mot de passe
