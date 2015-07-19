@@ -205,15 +205,12 @@ function doServerStartAnimation() {
         // Fading the text logo
         $("#textlogo").fadeIn();
 
-        // Fading the disconnect button
-        $("#disconnectbutton").fadeIn();
-
         // Fading the infos
         $("#infos").fadeIn(function() {
             // Fading the buttons
             $("#dashboard").fadeIn();
             $("#settings").fadeIn(function() {
-                $("#file-explorer").fadeIn();
+                $("#disconnect").fadeIn();
                 $("#about").fadeIn();
             });
         });
@@ -222,15 +219,12 @@ function doServerStartAnimation() {
 
 function doServerStopAnimation() {
     // Fading the buttons
-    $("#file-explorer").fadeOut();
+    $("#disconnect").fadeOut();
     $("#about").fadeOut(function() {
         $("#dashboard").fadeOut();
         $("#settings").fadeOut(function() {
             // Fading out the infos
             $("#infos").fadeOut();
-
-            // Fading out the disconnect button
-            $("#disconnectbutton").fadeOut();
 
             // Fading out the text logo
             $("#textlogo").fadeOut(function() {

@@ -63,10 +63,10 @@
                     </div>
                 </a>
 
-                <a href="Explorer">
-                    <div id="file-explorer" class="button bottom-button" style="display: none;">
-                        <img id="file-explorer-icon" class="button-icon" src="{{ getResource('Index', 'images/file-explorer.png', true) }}" />
-                        <p id="file-explorer-label" class="button-label">{{ getLangText("file-explorer") }}</p>
+                <a href="Disconnect">
+                    <div id="disconnect" class="button bottom-button" style="display: none;">
+                        <img id="disconnect-icon" class="button-icon" src="{{ getResource('Index', 'images/disconnect.png', true) }}" />
+                        <p id="disconnect-label" class="button-label">{{ getLangText("disconnect") }}</p>
                     </div>
                 </a>
             </div>
@@ -85,9 +85,6 @@
                     jQuery : <span style="color: #00ff00">jQueryVersion</span><br />
                     Server : <span style="color: #00ff00">{{ serverVersion }}</span><br />
                 </div>
-
-                <br />
-                <button class="submit-button" id="disconnectbutton" style="display: none;" onclick="window.location.href='Disconnect';">{{ getLangText("disconnect") }}</button>
             </div>
 
             <div id="right-buttons">
