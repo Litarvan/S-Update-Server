@@ -49,7 +49,7 @@ class FileDeleter extends \SUpdateServer\AppLoader\Application {
      }
 
      public function load() {
-
+     	echo \SUpdateServer\SessionManager::getSessionManager()->addAuthorizedPage("GetIgnoreList");
      }
 
  }

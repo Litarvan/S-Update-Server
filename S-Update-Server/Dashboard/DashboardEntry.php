@@ -19,31 +19,32 @@
  * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SUpdateServer\Pages;
+namespace SUpdateServer\Dashboard;
 
 /**
- * The Settings page
+ * The DashboardEntry, an entry for the Dashboard page
  *
  * @author TheShark34
- * @package S-Update-Server\Pages
+ * @package S-Update-Server\Dashboard
  * @version 3.0.0-BETA
  */
-class Settings extends \Paladin\Page {
+abstract class DashboardEntry {
 
-  public function getName() {
-    return "Settings";
-  }
+    /**
+     * The name of the entry
+     */
+    public abstract function getName();
 
-  public function getMainPage() {
-    return "Settings.php.twig";
-  }
+    /**
+     * The icon of the entry
+     */
+    public abstract function getIcon();
 
-  public function isThemable() {
-    return true;
-  }
-
-  public function constructTwigArray($args) {
-    return $args;
-  }
+    /**
+     * The link of the entry
+     */
+    public abstract function getLink();
 
 }
+
+?>

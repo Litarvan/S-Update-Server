@@ -22,20 +22,20 @@
 namespace SUpdateServer\Pages;
 
 /**
- * The Settings page
+ * The Dashboard page
  *
  * @author TheShark34
  * @package S-Update-Server\Pages
  * @version 3.0.0-BETA
  */
-class Settings extends \Paladin\Page {
+class Dashboard extends \Paladin\Page {
 
   public function getName() {
-    return "Settings";
+    return "Dashboard";
   }
 
   public function getMainPage() {
-    return "Settings.php.twig";
+    return "Dashboard.php.twig";
   }
 
   public function isThemable() {
@@ -43,7 +43,19 @@ class Settings extends \Paladin\Page {
   }
 
   public function constructTwigArray($args) {
-    return $args;
+    $entries = array();
+    $dashboardEntries = $args[0];
+
+    foreach($dashboardEntries as $dashboardEntry)
+        $entries[sizeof($entries)] = array(
+            "name" => $dashboardEntry->getName(),
+            "icon" => $dashboardEntry->getIcon(),
+            "link" => $dashboardEntry->getLink()
+        );
+
+    return array(
+        "entries" => $entries
+    );
   }
 
 }

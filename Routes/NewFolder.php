@@ -19,31 +19,34 @@
  * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SUpdateServer\Pages;
+use \Paladin\Route;
 
 /**
- * The Settings page
+ * The NewFolder Route, just create a new folder
  *
  * @author TheShark34
- * @package S-Update-Server\Pages
+ * @package S-Update-Server\Routes
  * @version 3.0.0-BETA
  */
-class Settings extends \Paladin\Page {
+class NewFolder extends Route {
 
-  public function getName() {
-    return "Settings";
-  }
+    public function onCalling($args) {
+        // Checking the argument
+        if(sizeof($args) == 0) {
+            echo "Bad Arguments";
+            return;
+        }
 
-  public function getMainPage() {
-    return "Settings.php.twig";
-  }
+        // Getting the total folder path
+        $folder = "";
+        foreach($args as $arg)
+            $folder .= ($arg . "/");
 
-  public function isThemable() {
-    return true;
-  }
-
-  public function constructTwigArray($args) {
-    return $args;
-  }
+        // Making the folder
+        echo "Making folder : " . $folder;
+        mkdir($folder);
+    }
 
 }
+
+?>

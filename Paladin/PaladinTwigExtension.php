@@ -29,7 +29,7 @@ namespace Paladin;
  * @version 1.0.0-BETA
  */
 class PaladinTwigExtension extends \Twig_Extension {
-  
+
   public function getName() {
     return "Paladin Twig Extension";
   }
@@ -39,41 +39,41 @@ class PaladinTwigExtension extends \Twig_Extension {
     $getResource = new \Twig_SimpleFunction('getResource', function ($pageName, $resource, $themable) {
       return Paladin::getRootFolder() . self::getFile($pageName, $resource, $themable, "resources");
     });
-    
+
     // Creating the addPanel function
     $addPanel = new \Twig_SimpleFunction('addPanel', function ($pageName, $panel, $themable, $args) {
       echo Paladin::getTwig()->render(self::getFile($pageName, $panel, $themable, "panels"), $args);
     });
-    
+
     // Returning an array of the functions
     return array(
       $getResource,
       $addPanel
     );
   }
-  
-  public function getFile($pageName, $file, $themable, $folder) {
+
+  public static function getFile($pageName, $file, $themable, $folder) {
     // Creating the empty resourcePath variable
     $filePath;
-    
+
     // Creating the resource relative path
     $fileRelativePath = "/" . $pageName . "/" . $folder . "/" . $file;
-    
+
     // If the page instance is themable and the current theme contains the resource
     if($themable && file_exists(Paladin::getThemeLoader()->getFolder() . "/" . Paladin::getThemeLoader()->getCurrentTheme() . $fileRelativePath))
       // Setting the template path to the theme template path
-      $filePath = Paladin::getThemeLoader()->getFolder() . "/" . Paladin::getThemeLoader()->getCurrentTheme() . $fileRelativePath; 
+      $filePath = Paladin::getThemeLoader()->getFolder() . "/" . Paladin::getThemeLoader()->getCurrentTheme() . $fileRelativePath;
     else
       // Setting the template path to the default path
       $filePath = Paladin::getPageLoader()->getFolder() . $fileRelativePath;
-    
+
     // Getting the current route
     $route = Paladin::getRouteLoader()->getCurrentRoute();
-    
+
     // Returning the resource path from the root folder
     return $filePath;
   }
-  
+
 }
 
 ?>

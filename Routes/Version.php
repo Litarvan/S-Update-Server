@@ -35,7 +35,10 @@ class Version extends Route {
         header("Content-Type: application/json");
 
         // Printing the version in a JSON
-        echo json_encode(array("version" => trim(file_get_contents("s-update-server.version"))), JSON_PRETTY_PRINT);
+        echo json_encode(
+            array("version" =>
+                trim(file_get_contents("s-update-server.version"))),
+            JSON_PRETTY_PRINT);
     }
 
 }

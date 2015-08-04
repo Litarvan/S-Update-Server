@@ -1,0 +1,108 @@
+<!--
+  Copyright 2015 TheShark34
+
+  This file is part of S-Update-Server.
+
+  S-Update-Server is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Lesser General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  S-Update-Server is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public License
+  along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>S-Update-Server - {{ getLangText("file-explorer") }}</title>
+
+    <!-- Bootstrap -->
+    <link href="{{ getResource('shared', 'css/bootstrap.min.css', true) }}" rel="stylesheet">
+
+    <!-- The S-Update Icon -->
+    <link rel="icon" href="{{ getResource('shared', 'icon.png', true) }}" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- About CSS -->
+    <link href="{{ getResource('FileExplorer', 'css/style.css', true) }}" rel="stylesheet">
+
+    <!-- S-Update-Server global CSS -->
+    <link href="{{ getResource('shared', 'css/global.css', true) }}" rel="stylesheet">
+</head>
+
+<body onresize="resizeCanvas()">
+    <div id="mainDiv">
+        <img src="{{ getResource('shared', 'logo.png', true) }}" />
+        <br />
+        <br />
+        <button style="width: 200px" onclick="window.location.href='{{ getHome() }}';">{{ getLangText('home') }}</button>
+        <button style="width: 200px" onclick="window.location.href='{{ root }}Dashboard';">{{ getLangText('dashboard') }}</button>
+        <br />
+        <br />
+
+        <hr />
+
+        <div id="toolbar">
+            <button id="reload" class="imgbutton" onclick="location.reload();"><img src="{{ getResource("FileExplorer", "images/reload.png", true) }}" /></button>
+            <button id="newfolder" class="imgbutton" onclick="newFolder('{{ root }}', '{{ path }}')"><img src="{{ getResource("FileExplorer", "images/newfolder.png", true) }}" /></button>
+        </div>
+
+        <hr />
+
+        <div id="dropzone">
+            <a id="message" onclick="upload()">{{ getLangText("clicktoupload") }}</a><br />
+            <canvas width="100" height="20" id="barcanvas"></canvas>
+
+            <form style="display: none;">
+                <input name="filesToUpload[]" id="filesToUpload" type="file" multiple="" />
+            </form>
+        </div>
+
+        <hr />
+
+        <div id="explorer">
+            {% for file in files %}
+                <div class="file">
+                    <img class="type" src="{{ file.folder ? getResource("FileExplorer", "images/folder.png", true) : getResource("FileExplorer", "images/file.png", true) }}" />
+                    <a href="{{ root }}FileExplorer/{{ file.path }}"><span class="name">{{ file.name }}</span></a>
+
+                    <span class="lastdate">{{ file.lastdate }}</span>
+                    <span class="size">{{ file.size }}</span>
+
+                    <button class="imgbutton delete" onclick="deleteFile('{{ getLangText("delete-sure")|replace({"\n": '', "\r": ''}) }}', '{{ file.path }}', '{{ root }}')"><img src="{{ getResource("FileExplorer", "images/delete.png", true) }}" /></button>
+                    <button class="imgbutton rename" onclick="rename('{{ file.path }}', '{{ root }}')"><img src="{{ getResource("FileExplorer", "images/rename.png", true) }}" /></button>
+                    {% if file.name ends with '.zip' %}
+                        <button class="imgbutton unzip" onclick="unzip('{{ getLangText("unzip-sure")|replace({"\n": '', "\r": ''}) }}', '{{ file.path }}', '{{ root }}')"><img src="{{ getResource("FileExplorer", "images/unzip.png", true) }}" /></button>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Defining root -->
+    <script>
+        var root = "{{ root }}";
+    </script>
+
+    <!-- The File Explorer Page Script -->
+    <script src="{{ getResource("FileExplorer", "js/fileexplorer.js", true) }}"></script>
+
+    <!-- The Upload Script -->
+    <script src="{{ getResource("FileExplorer", "js/uploader.js", false) }}"></script>
+</body>
+</html>

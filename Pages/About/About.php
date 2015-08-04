@@ -22,7 +22,7 @@
 namespace SUpdateServer\Pages;
 
 /**
- * An error page
+ * An about page
  *
  * @author TheShark34
  * @package S-Update-Server\Pages

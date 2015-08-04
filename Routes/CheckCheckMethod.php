@@ -32,8 +32,15 @@ use \Paladin\Route;
 class CheckCheckMethod extends Route {
 
     public function onCalling($args) {
+        // Setting the header
+        header("Content-Type: application/json");
+
+        // Printing the result
         if(sizeof($args) == 1)
-            echo '{ methodPresent: "' . (\SUpdateServer\Checking\CheckMethodLoader::getCheckMethodLoader()->isCheckMethodLoaded($args[0]) ? "true" : "false"). '"}';
+            echo json_encode(
+                array("methodPresent" =>
+                    \SUpdateServer\Checking\CheckMethodLoader::getCheckMethodLoader()->isCheckMethodLoaded($args[0]) ? "true" : "false"),
+                JSON_PRETTY_PRINT);
     }
 
 }

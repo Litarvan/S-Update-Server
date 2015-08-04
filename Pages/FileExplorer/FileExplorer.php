@@ -22,20 +22,20 @@
 namespace SUpdateServer\Pages;
 
 /**
- * The Settings page
+ * The File Explorer page
  *
  * @author TheShark34
  * @package S-Update-Server\Pages
  * @version 3.0.0-BETA
  */
-class Settings extends \Paladin\Page {
+class FileExplorer extends \Paladin\Page {
 
   public function getName() {
-    return "Settings";
+    return "FileExplorer";
   }
 
   public function getMainPage() {
-    return "Settings.php.twig";
+    return "FileExplorer.php.twig";
   }
 
   public function isThemable() {
@@ -43,7 +43,28 @@ class Settings extends \Paladin\Page {
   }
 
   public function constructTwigArray($args) {
-    return $args;
+    $files = array();
+
+    foreach($args["files"] as $file)
+        $files[sizeof($files)] = array(
+            "path" => $file,
+            "name" => basename($file),
+            "size" => $this->format_size(filesize($file)),
+            "folder" => is_dir($file),
+            "lastdate" => date('m/d/Y h:i:s a', filemtime($file))
+        );
+
+    return array(
+        "path" => $args["path"],
+        "files" => $files,
+        "root" => $args["root"]
+    );
+  }
+
+  private function format_size($size) {
+      $units = array( 'B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+      $power = $size > 0 ? floor(log($size, 1024)) : 0;
+      return number_format($size / pow(1024, $power), 2, '.', ',') . ' ' . $units[$power];
   }
 
 }

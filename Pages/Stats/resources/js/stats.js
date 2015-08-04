@@ -1,5 +1,3 @@
-<?php
-
 /*
  * Copyright 2015 TheShark34
  *
@@ -19,31 +17,16 @@
  * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SUpdateServer\Pages;
+function clearConnections() {
+    sendRequest("SetStat/connections/0");
+}
 
-/**
- * The Settings page
- *
- * @author TheShark34
- * @package S-Update-Server\Pages
- * @version 3.0.0-BETA
- */
-class Settings extends \Paladin\Page {
+function clearIps() {
+    sendRequest("SetStat/ips");
+}
 
-  public function getName() {
-    return "Settings";
-  }
-
-  public function getMainPage() {
-    return "Settings.php.twig";
-  }
-
-  public function isThemable() {
-    return true;
-  }
-
-  public function constructTwigArray($args) {
-    return $args;
-  }
-
+function sendRequest(request) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", request, true);
+    xhr.send(null);
 }

@@ -19,31 +19,23 @@
  * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SUpdateServer\Pages;
+use \Paladin\Route;
 
 /**
- * The Settings page
+ * The Stats Route, displays the Statistics page.
  *
  * @author TheShark34
- * @package S-Update-Server\Pages
+ * @package S-Update-Server\Routes
  * @version 3.0.0-BETA
  */
-class Settings extends \Paladin\Page {
+class Stats extends Route {
 
-  public function getName() {
-    return "Settings";
-  }
-
-  public function getMainPage() {
-    return "Settings.php.twig";
-  }
-
-  public function isThemable() {
-    return true;
-  }
-
-  public function constructTwigArray($args) {
-    return $args;
-  }
+    public function onCalling($args) {
+        \Paladin\Paladin::getPageLoader()->displayPage("\\SUpdateServer\\Pages", "Stats", array(
+            "stats" => \SUpdateServer\StatsManager::getStats()
+        ));
+    }
 
 }
+
+?>

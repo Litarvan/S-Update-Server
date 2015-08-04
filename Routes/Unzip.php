@@ -19,31 +19,39 @@
  * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SUpdateServer\Pages;
+use \Paladin\Route;
 
 /**
- * The Settings page
+ * The Unzip Route, to unzip a zip file
  *
  * @author TheShark34
- * @package S-Update-Server\Pages
+ * @package S-Update-Server\Routes
  * @version 3.0.0-BETA
  */
-class Settings extends \Paladin\Page {
+class Unzip extends Route {
 
-  public function getName() {
-    return "Settings";
-  }
+    public function onCalling($args) {
+        // Checking the argument
+        if(sizeof($args) == 0) {
+            echo "Bad Arguments";
+            return;
+        }
 
-  public function getMainPage() {
-    return "Settings.php.twig";
-  }
+        // Getting the total arguments
+        $path = "";
+        foreach($args as $arg)
+            $path .= ($arg . "/");
+        $path = substr($path, 0, strlen($path) - 1);
 
-  public function isThemable() {
-    return true;
-  }
-
-  public function constructTwigArray($args) {
-    return $args;
-  }
+        // Unzipping it
+        $zip = new ZipArchive;
+        $res = $zip->open($path);
+        if ($res === true) {
+            $zip->extractTo(dirname($path));
+            $zip->close();
+        }
+    }
 
 }
+
+?>

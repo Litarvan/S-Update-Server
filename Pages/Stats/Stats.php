@@ -22,28 +22,31 @@
 namespace SUpdateServer\Pages;
 
 /**
- * The Settings page
+ * The Statistics page
  *
  * @author TheShark34
  * @package S-Update-Server\Pages
  * @version 3.0.0-BETA
  */
-class Settings extends \Paladin\Page {
+class Stats extends \Paladin\Page {
 
   public function getName() {
-    return "Settings";
+    return "Stats";
   }
 
   public function getMainPage() {
-    return "Settings.php.twig";
+    return "Stats.php.twig";
   }
 
   public function isThemable() {
-    return true;
+    return false;
   }
 
   public function constructTwigArray($args) {
-    return $args;
+    return array(
+        "connections" => $args['stats']['connections'],
+        "ips" => $args['stats']['ips']
+    );
   }
 
 }

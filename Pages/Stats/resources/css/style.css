@@ -1,5 +1,3 @@
-<?php
-
 /*
  * Copyright 2015 TheShark34
  *
@@ -19,31 +17,30 @@
  * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SUpdateServer\Pages;
+#mainDiv {
+    text-align: center;
+    margin-top: 50px;
+}
 
-/**
- * The Settings page
- *
- * @author TheShark34
- * @package S-Update-Server\Pages
- * @version 3.0.0-BETA
- */
-class Settings extends \Paladin\Page {
+#connections {
+    text-align: center;
+    display: inline-block;
+    font-size: 20px;
+    margin-top: 20px;
+}
 
-  public function getName() {
-    return "Settings";
-  }
+#connections p {
+    font-size: 35px;
+}
 
-  public function getMainPage() {
-    return "Settings.php.twig";
-  }
+#clear-buttons {
+    padding: 25px;
+}
 
-  public function isThemable() {
-    return true;
-  }
+.clear-button {
+    width: 200px;
+}
 
-  public function constructTwigArray($args) {
-    return $args;
-  }
-
+#ips {
+    font-size: 20px;
 }

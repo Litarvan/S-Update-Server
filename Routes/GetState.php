@@ -35,7 +35,10 @@ class GetState extends Route {
         header("Content-Type: application/json");
 
         // Printing the version in a JSON
-        echo json_encode(array("state" => \SUpdateServer\ServerState::isEnabled() ? "enabled" : "disabled"), JSON_PRETTY_PRINT);
+        echo json_encode(
+            array("state" =>
+                \SUpdateServer\ServerState::isEnabled() ? "enabled" : "disabled"),
+             JSON_PRETTY_PRINT);
     }
 
 }

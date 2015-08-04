@@ -1,4 +1,4 @@
-/vendor/
-/Paladin/Cache/
-/.idea/
-/pack/
+files/
+pack/
+pack.bash
+vendor/

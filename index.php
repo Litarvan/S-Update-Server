@@ -19,6 +19,10 @@
 * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+// Starting the error handler
+require 'S-Update-Server/SUErrorHandler.php';
+\SUpdateServer\SUErrorHandler::init();
+
 // Loading Paladin
 require 'vendor/autoload.php';
 require 'Paladin/Page.php';
@@ -39,9 +43,18 @@ require 'S-Update-Server/AppLoader/Application.php';
 require 'S-Update-Server/Checking/CheckMethodLoader.php';
 require 'S-Update-Server/Checking/CheckMethod.php';
 require 'S-Update-Server/SessionManager.php';
+require 'S-Update-Server/Dashboard/DashboardManager.php';
+require 'S-Update-Server/Dashboard/DashboardEntry.php';
+require 'S-Update-Server/Dashboard/FileExplorerDBEntry.php';
+require 'S-Update-Server/Dashboard/StatsDBEntry.php';
+require 'S-Update-Server/StatsManager.php';
+
 
 // TODO: Remove this line, only for dev
 Paladin\Paladin::setAutoreloadEnabled(true);
+
+// Starting the session manager
+SUpdateServer\SessionManager::create();
 
 // Starting LangLoader
 SUpdateServer\LangLoader\LangLoader::create();
@@ -58,7 +71,13 @@ SUpdateServer\AppLoader\AppLoader::create();
 // Loading the check methods
 SUpdateServer\Checking\CheckMethodLoader::create();
 
+// Adding the dashboard entries
+SUpdateServer\Dashboard\DashboardManager::addSUEntries();
+
+// Loading the statistics
+SUpdateServer\StatsManager::loadStats();
+
 // Loading the session
-SUpdateServer\SessionManager::create();
+SUpdateServer\SessionManager::getSessionManager()->start();
 
 ?>

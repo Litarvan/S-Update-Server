@@ -23,7 +23,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>S-Update-Server - {{ getLangText("settings") }}</title>
+    <title>S-Update-Server - {{ getLangText("stats") }}</title>
 
     <!-- Bootstrap -->
     <link href="{{ getResource('shared', 'css/bootstrap.min.css', true) }}" rel="stylesheet">
@@ -39,7 +39,7 @@
     <![endif]-->
 
     <!-- About CSS -->
-    <link href="{{ getResource('Settings', 'css/style.css', true) }}" rel="stylesheet">
+    <link href="{{ getResource('Stats', 'css/style.css', true) }}" rel="stylesheet">
 
     <!-- S-Update-Server global CSS -->
     <link href="{{ getResource('shared', 'css/global.css', true) }}" rel="stylesheet">
@@ -50,44 +50,36 @@
         <img src="{{ getResource('shared', 'logo.png', true) }}" />
         <br />
         <br />
-        <button id="home" style="margin-right: 30px;" onclick="window.location.href='{{ getHome() }}';">{{ getLangText('cancel') }}</button>
+        <button style="width: 200px" onclick="window.location.href='{{ getHome() }}';">{{ getLangText('home') }}</button>
+        <button style="width: 200px" onclick="window.location.href='Dashboard';">{{ getLangText('dashboard') }}</button>
         <br />
         <br />
 
-        <form method="post" target="" id="passwordForm">
-            <input id="form" name="form" value="passwordForm" style="display: none;" />
+        <hr />
 
-            <h1>{{ getLangText("change-pass") }}</h1>
-            <br />
-            <br />
-
-            <label for="password">{{ getLangText("password") }}</label> : <input class="text-field" type="password" name="password" id="password" onkeyup="checkFields(); return false;" required/><br />
-            <label for="vpassword">{{ getLangText("validation-password") }}</label> : <input class="text-field" type="vpassword" name="vpassword" id="vpassword" onkeyup="checkFields(); return false;" required/><br /><br />
-        </form>
-        <button class="submit-button" onclick="checkAndSubmit()" />{{ getLangText("change") }}</button>
-
-        <form method="post" target="">
-            <input id="form" name="form" value="langForm" style="display: none;" />
-
-            <h1>{{ getLangText("change-language") }}</h1>
-            <br />
+        <div id="connections">
+            <p>{{ connections }}</p>
             <br />
 
-            <select name="language" id="language" id="langForm">
-                <option value="fr_FR">Francais</option>
-                <option value="en_US">Anglais</option>
-            </select>
-            <br />
-            <br />
-            <br />
-            
-            <input class="submit-button" type="submit" value="{{ getLangText("change") }}" />
-            <br />
-            <br />
-        </form>
+            {{ getLangText("connections") }}
+        </div>
+        <br />
+        <br />
+
+        <div id="clear-buttons">
+            <button class="clear-button" onclick="clearConnections()">{{ getLangText("clear-connections") }}</button>
+            <button id="clear-button" onclick="clearIps()">{{ getLangText("clear-ips") }}</button>
+        </div>
+        <br />
+
+        <div id="ips">
+            {% for ip in ips %}
+                {{ ip }}<br />
+            {% endfor %}
+        </div>
     </div>
 
-    <!-- The FieldChecker JS -->
-    <script src="{{ getResource('Settings', 'js/fieldChecker.js', false)}}"></script>
+    <!-- The Stats Page Script -->
+    <script src="{{ getResource("Stats", "js/stats.js", true) }}"></script>
 </body>
 </html>

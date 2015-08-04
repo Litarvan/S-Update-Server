@@ -19,31 +19,27 @@
  * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SUpdateServer\Pages;
+use \Paladin\Route;
 
 /**
- * The Settings page
+ * The Upload Route, to upload some files.
  *
  * @author TheShark34
- * @package S-Update-Server\Pages
+ * @package S-Update-Server\Routes
  * @version 3.0.0-BETA
  */
-class Settings extends \Paladin\Page {
+class Upload extends Route {
 
-  public function getName() {
-    return "Settings";
-  }
+    public function onCalling($args) {
+        $uploaddir = realpath('files/') . "/";
+        $uploadfile = $uploaddir . basename($_FILES['file']['name']);
 
-  public function getMainPage() {
-    return "Settings.php.twig";
-  }
-
-  public function isThemable() {
-    return true;
-  }
-
-  public function constructTwigArray($args) {
-    return $args;
-  }
+        if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile))
+            echo "to : " . $uploaddir;
+        else
+            echo "Sorry, unable to upload the files. move_uploaded_file returned false";
+    }
 
 }
+
+?>

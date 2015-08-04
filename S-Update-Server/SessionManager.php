@@ -41,6 +41,20 @@ class SessionManager {
     private $passwordLocation;
 
     /**
+     * The list of authorized page (without login)
+     */
+    private $authorizeList = array(
+    	"Login",
+    	"Install",
+    	"ListFiles",
+    	"GetState",
+    	"Version",
+    	"CheckCheckMethod",
+    	"CheckApplication",
+        "GetTotalBytes"
+    );
+
+    /**
      * The default password location
      */
     const DEFAULT_PASSWORD_LOCATION = "S-Update-Server/pass.word";
@@ -54,16 +68,15 @@ class SessionManager {
      */
     public static function create() {
         self::$sessionManager = new SessionManager(self::DEFAULT_PASSWORD_LOCATION);
-        self::$sessionManager->start();
     }
 
     /**
      * Loads all, and redirect the user
      */
-    private function start() {
+    public function start() {
         // Starting the session
         session_start();
-
+        
         // If the user is logged
         if(isset($_SESSION["logged"]) && $_SESSION["logged"] == true)
             // If the current route is 'Login'
@@ -76,14 +89,38 @@ class SessionManager {
                 \Paladin\Paladin::getRouteLoader()->loadRoute();
         // Else
         else
-            // If the current route isn't 'Install' or 'Login'
-            if(\Paladin\Paladin::getRouteLoader()->getCurrentRoute()['name'] != "Install" && \Paladin\Paladin::getRouteLoader()->getCurrentRoute()['name'] != "Login")
+            // If the current route isn't in the authorized page list
+            if(!$this->isAuthorized(\Paladin\Paladin::getRouteLoader()->getCurrentRoute()['name']))
                 // Redirecting it
                 header("Location: " . \Paladin\Paladin::getRootFolder() . "Login");
             // Else
             else
                 // Loading the route, normally
                 \Paladin\Paladin::getRouteLoader()->loadRoute();
+    }
+
+    /**
+     * Add a page, to the authorized list (it doesn't require login)
+     *
+     * @param page
+     *            The page to add to the list
+     */
+    public function addAuthorizedPage($page) {
+    	$this->authorizeList[sizeof($this->authorizeList)] = $page;
+    }
+
+    /**
+     * Check if a page is in the authorized list (it doesn't require login)
+     *
+     * @param page
+     *            The page to check if it is in the authorized list
+     * @return True if it is, false if not
+     */
+    public function isAuthorized($page) {
+    	foreach($this->authorizeList as $authorizedPage)
+    		if($authorizedPage == $page)
+    			return true;
+    	return false;
     }
 
     /**
