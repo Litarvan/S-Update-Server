@@ -1,0 +1,116 @@
+/*
+ * Copyright 2015 TheShark34
+ *
+ * This file is part of S-Update-Server.
+ *
+ * S-Update-Server is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * S-Update-Server is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#mainDiv {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#explorer {
+    font-size: 20px;
+    text-align: left;
+    line-height: normal;
+}
+
+hr {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.file {
+    width: 100%;
+    height: 70px;
+}
+
+.file:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.type {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.name {
+    margin-left: 2%;
+}
+
+.size {
+    float: right;
+    margin-right: 10%;
+    margin-top: 18px;
+    width: 115px;
+}
+
+.lastdate {
+    float: right;
+    margin-right: 2%;
+    margin-top: 18px;
+}
+
+.delete {
+    float: right;
+    margin-right: 25px;
+}
+
+.rename {
+    float: right;
+}
+
+.unzip {
+    float: right;
+}
+
+a, a:hover {
+    color: white;
+}
+
+.imgbutton {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    background: rgba(255, 255, 255, 0);
+}
+
+.imgbutton:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+#reload {
+    margin-right: 25px;
+}
+
+#dropzone {
+    width: 100%;
+    height: 80px;
+}
+
+#message {
+    font-size: 20px;
+    margin-top: 18px;
+    display: inline-block;
+}
+
+#barcanvas {
+    width: 100%;
+    height: 20px;
+    margin-top: 13px;
+}

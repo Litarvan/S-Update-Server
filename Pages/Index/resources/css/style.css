@@ -1,0 +1,115 @@
+/*
+ * Copyright 2015 TheShark34
+ *
+ * This file is part of S-Update-Server.
+ *
+ * S-Update-Server is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * S-Update-Server is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+    background-color: #000;
+    opacity: 1.0;
+    -webkit-transition: background 1.5s linear;
+    -moz-transition: background 1.5s linear;
+    -o-transition: background 1.5s linear;
+    -ms-transition: background 1.5s linear;
+    transition: background 1.5s linear;
+}
+
+body {
+    background-image: none;
+}
+
+#centerDiv {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    top: 50%;
+    left: 50%;
+    margin-left: -125px;
+    margin-top: -110px;
+}
+
+#canvas {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    top: 50%;
+    left: 50%;
+    margin-left: -175px;
+    margin-top: -175px;
+}
+
+#sharklogo {
+    position: absolute;
+    width: 125px;
+    height: 125px;
+    top: 50%;
+    left: 50%;
+    margin-left: -62px;
+    margin-top: -62px;
+}
+
+#textlogo {
+    margin-left: -57px;
+}
+
+#infos {
+    display: none;
+    font-size: 18px;
+}
+
+#left-buttons {
+    position: absolute;
+    left: -550px;
+    top: -90px;
+}
+
+#right-buttons {
+    position: absolute;
+    left: 450px;
+    top: -90px;
+}
+
+.button {
+    width: 350px;
+    height: 200px;
+    text-align: center;
+    color: white;
+}
+
+.button:hover {
+    background-color: rgba(255, 255, 255, 0.20);
+}
+
+.top-button {
+    margin-top: 20%;
+}
+
+.bottom-button {
+    margin-top: 40%;
+}
+
+.button-icon {
+    margin-top: 35px;
+}
+
+.button-label {
+    margin-top: 20px;
+    font-size: 18px;
+    font-family: Nexa-Bold, Arial, sans-serif;
+    font-style: bold;
+}

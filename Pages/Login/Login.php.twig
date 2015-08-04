@@ -1,0 +1,90 @@
+<!--
+  Copyright 2015 TheShark34
+
+  This file is part of S-Update-Server.
+
+  S-Update-Server is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Lesser General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  S-Update-Server is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public License
+  along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+{#
+    Redirection script if the page was acceed manually
+    <?php
+        header("Location: GetOutOfHere");
+    ?>
+#}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>S-Update-Server - {{ getLangText("login") }}</title>
+
+    <!-- Bootstrap -->
+    <link href="{{ getResource('shared', 'css/bootstrap.min.css', true) }}" rel="stylesheet">
+
+    <!-- The S-Update Icon -->
+    <link rel="icon" href="{{ getResource('shared', 'icon.png', true) }}" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Login CSS -->
+    <link href="{{ getResource('Login', 'css/style.css', true) }}" rel="stylesheet">
+
+    <!-- S-Update-Server global CSS -->
+    <link href="{{ getResource('shared', 'css/global.css', true) }}" rel="stylesheet">
+
+    {# Setting the background black if the server is not activated #}
+    {% if not serverActivated %}
+        <style>
+            html, body {
+                background-image: none;
+                background: black;
+            }
+        </style>
+    {% endif %}
+</head>
+
+<body>
+    <div class='fulldiv'>
+        <div class="center" id="centerDiv">
+            <img src="{{ getResource("shared", "logo.png", false) }}" />
+
+            <form method="post" target="">
+                <label for="password">{{ getLangText("password") }}</label> : <input class="text-field" type="password" name="password" id="password" required/>
+                <br />
+                <br />
+                <input class="submit-button" type="submit" value="{{ getLangText("login") }}" />
+            </form>
+
+            <br />
+
+            {% if drawMessage %}
+                <span style="color: red">{{ getLangText(message) }}</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{{ getResource('shared', 'js/jquery-1.11.3.min.js', false) }}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ getResource('shared', 'js/bootstrap.min.js', false) }}"></script>
+</body>
+</html>
