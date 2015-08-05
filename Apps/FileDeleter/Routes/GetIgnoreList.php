@@ -38,6 +38,9 @@ class GetIgnoreList extends Route {
     const IGNORE_LIST_FILES = "S-Update-Server/Ignore.list";
 
     public function onCalling($args) {
+    	// Setting the content type
+    	header("Content-Type: application/json");
+    	
         // Creating the ignore list
         $ignoreList = array();
 
