@@ -51,7 +51,8 @@ class SessionManager {
     	"Version",
     	"CheckCheckMethod",
     	"CheckApplication",
-        "GetTotalBytes"
+        "GetTotalBytes",
+        "SetStat"
     );
 
     /**
@@ -76,7 +77,7 @@ class SessionManager {
     public function start() {
         // Starting the session
         session_start();
-        
+
         // If the user is logged
         if(isset($_SESSION["logged"]) && $_SESSION["logged"] == true)
             // If the current route is 'Login'

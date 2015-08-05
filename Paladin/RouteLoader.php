@@ -76,8 +76,9 @@ class RouteLoader {
             // Adding / to the url
             $completeRoute = "/" . $completeRoute;
 
-        // Deleting the current script parent folder of the url
-        $completeRoute = str_replace(dirname($_SERVER['SCRIPT_NAME']), "", $completeRoute);
+        // Deleting the current script parent folder of the url (only if the route isn't /)
+        if(dirname($_SERVER['SCRIPT_NAME']) != "/")
+            $completeRoute = str_replace(dirname($_SERVER['SCRIPT_NAME']), "", $completeRoute);
 
         // If the url starts with /
         if(substr($completeRoute, 0, 1) == "/")
