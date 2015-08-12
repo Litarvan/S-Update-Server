@@ -66,7 +66,7 @@ class GetTotalBytes extends Route {
         // For each file
         foreach($list as $file)
             // Adding its size to the total size
-            $totalSize += filesize("files/" . $file);
+            $totalSize += filesize(str_replace("//", "/", "files/" . urldecode($file)));
 
         // Printing the version in a JSON
         echo json_encode(
