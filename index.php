@@ -19,6 +19,14 @@
 * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+if(!is_dir(__DIR__ . "/vendor")) {
+    echo 'Il faut telecharger le serveur depuis la page release ici : https://github.com/TheShark34/S-Update-Server/releases';
+    die();
+}
+
+if(!file_exists(__DIR__ . "/files"))
+    mkdir(__DIR__ . "/files");
+
 // Starting the error handler
 require 'S-Update-Server/SUErrorHandler.php';
 \SUpdateServer\SUErrorHandler::init();
