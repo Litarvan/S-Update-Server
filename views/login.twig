@@ -1,0 +1,71 @@
+{#
+ # Copyright 2015 TheShark34
+ #
+ # This file is part of S-Update-Server.
+ #
+ # S-Update-Server is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU Lesser General Public License as published by
+ # the Free Software Foundation, either version 3 of the License, or
+ # (at your option) any later version.
+ #
+ # S-Update-Server is distributed in the hope that it will be useful,
+ # but WITHOUT ANY WARRANTY; without even the implied warranty of
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ # GNU Lesser General Public License for more details.
+ #
+ # You should have received a copy of the GNU Lesser General Public License
+ # along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
+ #}
+
+{#
+ # Auth login page
+ #
+ # v3-(Panel-1.1.0-BETA)
+ #}
+
+{% extends 'templates/base.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block head %}
+    <!-- Login CSS -->
+    <link href="{{ resPath ~ "css/login.css" }}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+{# Setting the background black if the server is not activated #}
+{% if not serverActivated %}
+    <style>
+        html, body {
+            background: black;
+        }
+    </style>
+{% else %}
+    <style>
+        html, body {
+            background-image: url({{ resPath ~ "images/background.png" }});
+        }
+    </style>
+{% endif %}
+<div class='fulldiv'>
+    <div class="center" id="centerDiv">
+        <img src="{{ resPath ~ "images/logo.png" }}" />
+
+        <form method="post" target="">
+            <label for="password">Password</label> : <input class="text-field" type="password" name="password" id="password" required/>
+            <br />
+            <br />
+            <input class="submit-button" type="submit" value="Login" />
+        </form>
+
+        <br />
+
+        {% if error %}
+            <span style="color: red">Bad password</span>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
+
+

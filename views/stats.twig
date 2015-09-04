@@ -1,0 +1,80 @@
+{#
+ # Copyright 2015 TheShark34
+ #
+ # This file is part of S-Update-Server.
+ #
+ # S-Update-Server is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU Lesser General Public License as published by
+ # the Free Software Foundation, either version 3 of the License, or
+ # (at your option) any later version.
+ #
+ # S-Update-Server is distributed in the hope that it will be useful,
+ # but WITHOUT ANY WARRANTY; without even the implied warranty of
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ # GNU Lesser General Public License for more details.
+ #
+ # You should have received a copy of the GNU Lesser General Public License
+ # along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
+ #}
+
+{#
+ # Panel statistics page
+ #
+ # v3-(Panel-1.1.0-BETA)
+ #}
+
+{% extends 'templates/base.twig' %}
+
+{% block title %}Statistics{% endblock %}
+
+{% block head %}
+    <!-- Index CSS -->
+    <link href="{{ resPath ~ "css/stats.css" }}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+    <style>
+        html, body {
+            background-image: url({{ resPath ~ "images/background.png" }});
+        }
+    </style>
+
+    <div id="mainDiv">
+        <img src="{{ resPath ~ 'images/logo.png' }}" />
+        <br />
+        <br />
+        <button style="width: 200px" onclick="window.location.href='{{ app.request.basepath }}';">Home</button>
+        <br />
+        <br />
+
+        <hr />
+
+        <div id="connections">
+            <p>{{ connections }}</p>
+            <br />
+
+            Connections
+        </div>
+        <br />
+        <br />
+
+        <div id="clear-buttons">
+            <button class="clear-button" onclick="clearConnections()">Clear connections</button>
+            <button id="clear-button" onclick="clearIps()">Clear IPs</button>
+        </div>
+        <br />
+
+        <div id="ips">
+            {% for ip in ips %}
+                {{ ip }}<br />
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+
+    <!-- The Stats Page Script -->
+    <script src="{{ resPath ~ "js/stats.js" }}"></script>
+
+{% endblock %}

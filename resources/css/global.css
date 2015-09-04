@@ -1,0 +1,41 @@
+body {
+    background-color: #333;
+    color: #fff;
+}
+
+button {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.15);
+    width: 150px;
+    height: 35px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.fulldiv {
+    width: 100%;
+    height: auto;
+    bottom: 0px;
+    top: 0px;
+    left: 0;
+    position: absolute;
+}
+
+.submit-button {
+	border: none;
+	background-color: #444;
+	color: #FFF;
+	width: 150px;
+	height: 35px;
+}
+
+.text-field {
+	margin-bottom: 10px;
+	width: 250px;
+	height: 30px;
+	border: none;
+	background-color: #444;
+}

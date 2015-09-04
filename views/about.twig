@@ -1,0 +1,62 @@
+{#
+ # Copyright 2015 TheShark34
+ #
+ # This file is part of S-Update-Server.
+ #
+ # S-Update-Server is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU Lesser General Public License as published by
+ # the Free Software Foundation, either version 3 of the License, or
+ # (at your option) any later version.
+ #
+ # S-Update-Server is distributed in the hope that it will be useful,
+ # but WITHOUT ANY WARRANTY; without even the implied warranty of
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ # GNU Lesser General Public License for more details.
+ #
+ # You should have received a copy of the GNU Lesser General Public License
+ # along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
+ #}
+
+{#
+ # Panel about page
+ #
+ # v3-(Panel-1.1.0-BETA)
+ #}
+
+{% extends 'templates/base.twig' %}
+
+{% block title %}About{% endblock %}
+
+{% block head %}
+    <!-- Index CSS -->
+    <link href="{{ resPath ~ "css/about.css" }}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+    <style>
+        html, body {
+            background-image: url({{ resPath ~ "images/background.png" }});
+        }
+    </style>
+
+    <div class='fulldiv'>
+        <div class="center">
+            <img src="{{ resPath ~ 'images/logo.png' }}" />
+            <h1>S-Update-Server 3</h1>
+            <br />
+            <br />
+
+            <p>
+                Copyright 2015 TheShark34 under LGPL-3.0 license
+                <br />
+                <br />
+                Sources on <a href="https://github.com/TheShark34/S-Update-Server">Github</a>
+            </p>
+
+            <br />
+            <img src="{{ resPath ~ 'images/sharklogo.png' }}" />
+            <br /><br />
+            <button id="home" style="margin-right: 30px;" onclick="window.location.href='home';">Home</button>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,66 @@
+<!--
+  Copyright 2015 TheShark34
+
+  This file is part of S-Update-Server.
+
+  S-Update-Server is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Lesser General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  S-Update-Server is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public License
+  along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+{#
+ # Panel base template
+ #
+ # v3-(Panel-1.1.0-BETA)
+ #}
+
+{%  set resPath = app.request.basepath ~ "/resources/" %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>S-Update-Server - {% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap -->
+    <link href="{{ resPath ~ 'css/bootstrap.min.css' }}" rel="stylesheet">
+
+    <!-- The S-Update Icon -->
+    <link rel="icon" href="{{ resPath ~ 'images/icon.png' }}" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- S-Update-Server global CSS -->
+    <link href="{{ resPath ~ 'css/global.css' }}" rel="stylesheet">
+
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    {% block content %}{% endblock %}
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{{ resPath ~ 'js/jquery-1.11.3.min.js' }}"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ resPath ~ 'js/bootstrap.min.js' }}"></script>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

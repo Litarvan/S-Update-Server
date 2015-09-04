@@ -1,0 +1,100 @@
+{#
+ # Copyright 2015 TheShark34
+ #
+ # This file is part of S-Update-Server.
+ #
+ # S-Update-Server is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU Lesser General Public License as published by
+ # the Free Software Foundation, either version 3 of the License, or
+ # (at your option) any later version.
+ #
+ # S-Update-Server is distributed in the hope that it will be useful,
+ # but WITHOUT ANY WARRANTY; without even the implied warranty of
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ # GNU Lesser General Public License for more details.
+ #
+ # You should have received a copy of the GNU Lesser General Public License
+ # along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
+ #}
+
+{#
+ # Panel home page
+ #
+ # v3-(Panel-1.1.0-BETA)
+ #}
+
+{% extends 'templates/base.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block head %}
+    <!-- Index CSS -->
+    <link href="{{ resPath ~ "css/index.css" }}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<div class='fulldiv'>
+    <div id="centerDiv">
+        <div id="left-buttons">
+            <a href="statistics">
+                <div id="statistics" class="button top-button" style="display: none;">
+                    <img id="statistics-icon" class="button-icon" src="{{ resPath ~ 'images/stats.png' }}" />
+                    <p id="statistics-label" class="button-label">Statistics</p>
+                </div>
+            </a>
+
+            <a href="../auth/logout">
+                <div id="disconnect" class="button bottom-button" style="display: none;">
+                    <img id="disconnect-icon" class="button-icon" src="{{ resPath ~ 'images/disconnect.png' }}" />
+                    <p id="disconnect-label" class="button-label">Disconnect</p>
+                </div>
+            </a>
+        </div>
+
+        <div style="text-align: center;">
+            <img id="sharklogo" src="{{ resPath ~ 'images/sharklogo.png' }}" />
+            <canvas id="canvas" width="350" height="350"></canvas>
+            <img id="logo" style="display: none;" src="{{ resPath ~ 'images/icon.png' }}" />
+            <img id="textlogo" style="display: none;" src="{{ resPath ~ 'images/textlogo.png' }}" />
+
+            <div id="infos">
+                <b>Status : <span style="color: #00ff00">Working</span></b><br /><br />
+
+                Framework : <span style="color: #00ff00">Silex {{ silexVersion }}</span><br />
+                Server : <span style="color: #00ff00">{{ server }}</span></br />
+                Base : <span style="color: #00ff00">{{ base }}</span><br />
+                Panel : <span style="color: #00ff00">{{ panel }}</span><br />
+                Internal : <span style="color: #00ff00">{{ internal }}</span><br />
+            </div>
+        </div>
+
+        <div id="right-buttons">
+            <a href="settings">
+                <div id="settings" class="button top-button" style="display: none;">
+                    <img id="settings-icon" class="button-icon" src="{{ resPath ~ 'images/settings.png' }}" />
+                    <p id="settings-label" class="button-label">Settings</p>
+                </div>
+            </a>
+
+            <a href="about">
+                <div id="about" class="button bottom-button" style="display: none;">
+                    <img id="about-icon" class="button-icon" src="{{ resPath ~ 'images/about.png' }}" />
+                    <p id="about-label" class="button-label">About</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <!-- Index JS script -->
+    <script src="{{ resPath ~ 'js/index.js' }}"></script>
+
+    <!-- Starting the JS script -->
+    <script>
+        start({{ serverEnabled ? "true" : "false" }}, "{{ resPath ~ 'images/background.png' }}");
+    </script>
+{% endblock %}
