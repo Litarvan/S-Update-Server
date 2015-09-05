@@ -35,7 +35,7 @@ class AuthController {
     }
 
     public function getLogin() {
-        return SUpdateServer::app()["twig"]->render("login.twig", array("error" => false, "serverActivated" => SUpdateServer::serverConfig()->get("enabled")));
+        return SUpdateServer::app()->display("login.twig", array("error" => false, "serverActivated" => SUpdateServer::serverConfig()->get("enabled")));
     }
 
     public function postLogin() {
@@ -43,7 +43,7 @@ class AuthController {
             $_SESSION["logged"] = true;
             return new RedirectResponse("../panel/home");
         } else
-            return SUpdateServer::app()["twig"]->render("login.twig", array("error" => true, "serverActivated" => SUpdateServer::serverConfig()->get("enabled")));
+            return SUpdateServer::app()->display("login.twig", array("error" => true, "serverActivated" => SUpdateServer::serverConfig()->get("enabled")));
     }
 
 }

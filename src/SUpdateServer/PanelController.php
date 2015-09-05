@@ -31,7 +31,7 @@ class PanelController {
 
     public function getPanel($request) {
         if($request == "home")
-            return SUpdateServer::app()["twig"]->render("home.twig", array(
+            return SUpdateServer::app()->display("home.twig", array(
                 "silexVersion" => SUpdateServer::VERSION,
                 "server" => SUpdateServer::SERVER_VERSION,
                 "base" => SUpdateServer::BASE_VERSION,
@@ -40,11 +40,11 @@ class PanelController {
                 "serverEnabled" => SUpdateServer::serverConfig()->get("enabled")
             ));
         else if($request == "about")
-            return SUpdateServer::app()["twig"]->render("about.twig");
+            return SUpdateServer::app()->display("about.twig");
         else if($request == "settings")
-            return SUpdateServer::app()["twig"]->render("settings.twig");
+            return SUpdateServer::app()->display("settings.twig");
         else if ($request == "statistics")
-            return SUpdateServer::app()["twig"]->render("stats.twig", array(
+            return SUpdateServer::app()->display("stats.twig", array(
                 "connections" => SUpdateServer::serverConfig()->get("connections"),
                 "ips" => (array) SUpdateServer::serverConfig()->get("ips")
             ));
@@ -61,5 +61,3 @@ class PanelController {
     }
 
 }
-
-?>

@@ -31,7 +31,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 class InstallController {
 
     public function getInstall() {
-        return SUpdateServer::app()["twig"]->render('install.twig', array());
+        return SUpdateServer::app()->display('install.twig', array());
     }
 
     public function postInstall() {

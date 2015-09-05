@@ -187,6 +187,13 @@ class SUpdateServer extends Application {
         };
     }
 
+    /**
+     * Display a view
+     */
+    public function display($view, $args = array()) {
+        return $this["twig"]->render($view, $args);
+    }
+
 }
 
 ?>
