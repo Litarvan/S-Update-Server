@@ -29,6 +29,7 @@ require_once "SUpdateServer/PanelController.php";
 require_once "SUpdateServer/ServerController.php";
 require_once "SUpdateServer/AuthController.php";
 require_once "SUpdateServer/StatsController.php";
+require_once "SUpdateServer/InstallController.php";
 require_once "SUpdateServer/Internal/CheckMethod.php";
 require_once "SUpdateServer/Internal/CheckMethodLoader.php";
 require_once "SUpdateServer/Internal/Application.php";
@@ -72,6 +73,11 @@ $app['auth'] = $app->share(function() {
 // Registering the stats controller
 $app['stats'] = $app->share(function() {
     return new StatsController;
+});
+
+// Registering the install controller
+$app['install'] = $app->share(function() {
+    return new InstallController;
 });
 
 // Loading the CheckMethod loader

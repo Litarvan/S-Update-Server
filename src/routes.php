@@ -57,9 +57,8 @@ $app->get("/set-enabled/{enabled}", function($enabled) {
     return new Response("");
 })->before(SUpdateServer::installMiddleware())->before(SUpdateServer::authMiddleware());
 
-$app->get("/install", function() {
-    return $app->render('install.twig', array());
-})->before(SUpdateServer::installMiddleware());
+$app->get("/install", "install:getInstall")->before(SUpdateServer::installMiddleware());
+$app->post("/install", "install:postInstall")->before(SUpdateServer::installMiddleware());
 
 $app->post("/server/{request}", "server:postServer");
 $app->post("/server/list/{checkmethod}", "server:listFiles");

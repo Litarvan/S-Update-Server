@@ -1,0 +1,74 @@
+{#
+ # Copyright 2015 TheShark34
+ #
+ # This file is part of S-Update-Server.
+ #
+ # S-Update-Server is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU Lesser General Public License as published by
+ # the Free Software Foundation, either version 3 of the License, or
+ # (at your option) any later version.
+ #
+ # S-Update-Server is distributed in the hope that it will be useful,
+ # but WITHOUT ANY WARRANTY; without even the implied warranty of
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ # GNU Lesser General Public License for more details.
+ #
+ # You should have received a copy of the GNU Lesser General Public License
+ # along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
+ #}
+
+{#
+ # Auth login page
+ #
+ # v3-(Panel-1.1.0-BETA)
+ #}
+
+{% extends 'templates/base.twig' %}
+
+{% block title %}Install{% endblock %}
+
+{% block head %}
+    <!-- Install CSS -->
+    <link href="{{ resPath ~ "css/install.css" }}" rel="stylesheet" />
+
+    <!-- Lato Google Font -->
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block content %}
+    {# Setting the background black if the server is not activated #}
+    {% if not serverActivated %}
+        <style>
+            html, body {
+                background: black;
+            }
+        </style>
+    {% else %}
+        <style>
+            html, body {
+                background-image: url({{ resPath ~ "images/background.png" }});
+            }
+        </style>
+    {% endif %}
+    <div class='fulldiv'>
+        <div class="center" id="centerDiv">
+            <img src="{{ resPath ~ "images/icon.png" }}" />
+
+            <p>Welcome</p>
+
+            <br />
+            <form method="post" target="" id="passwordForm">
+                <label for="password">Password</label> : <br/><input class="text-field" type="password" name="password" id="password" onkeyup="checkFields(); return false;" required/><br />
+                <label for="vpassword">Valid Password</label> : <br/><input class="text-field" type="password" name="vpassword" id="vpassword" onkeyup="checkFields(); return false;" required/><br /><br />
+            </form>
+
+            <button class="submit-button" onclick="checkAndSubmit()">Start</button>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <!-- The FieldChecker JS -->
+    <script src="{{ resPath ~ 'js/fieldChecker.js' }}"></script>
+{% endblock %}

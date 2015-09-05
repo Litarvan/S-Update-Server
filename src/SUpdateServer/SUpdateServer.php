@@ -152,7 +152,7 @@ class SUpdateServer extends Application {
                 if($isServerInstalled)
                     return;
                 else
-                    return new RedirectResponse("install");
+                    return new RedirectResponse("../install");
 
         };
     }
