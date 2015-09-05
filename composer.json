@@ -1,5 +1,5 @@
 {
-    "minimum-stability": "beta",
+    "minimum-stability": "stable",
     "name": "theshark34/s-update-server",
     "description": "The Server for the S-Update update system",
     "keywords": ["server", "s-update", "theshark34"],
