@@ -39,9 +39,9 @@ $app->get("/aubergine", function() {
     return new RedirectResponse("http://www.google.fr/search?q=aubergine");
 });
 
-$app->get("/auth/logout", "auth:logout")->before(SUpdateServer::authMiddleware());
-$app->get("/auth/login", "auth:getLogin")->before(SUpdateServer::authMiddleware());
-$app->post("/auth/login", "auth:postLogin")->before(SUpdateServer::authMiddleware());
+$app->get("/auth/logout", "auth:logout")->before(SUpdateServer::authMiddleware())->before(SUpdateServer::installMiddleware());
+$app->get("/auth/login", "auth:getLogin")->before(SUpdateServer::authMiddleware())->before(SUpdateServer::installMiddleware());
+$app->post("/auth/login", "auth:postLogin")->before(SUpdateServer::authMiddleware())->before(SUpdateServer::installMiddleware());
 
 
 // Internal routes
