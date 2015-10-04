@@ -25,8 +25,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class ServerController {
 
     public function postServer($request) {
-        header("Content-Type: application/json");
-
         switch($request) {
             case "is-enabled":
                 return $this->send(array("enabled" => (bool) SUpdateServer::serverConfig()->get("enabled")));
