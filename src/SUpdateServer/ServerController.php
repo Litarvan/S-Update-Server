@@ -76,7 +76,7 @@ class ServerController {
         // For each file
         foreach($list as $file)
             // Adding its size to the total size
-            $totalSize += filesize(SUpdateServer::FILES_DIRECTORY . "/" . $file);
+            $totalSize += filesize(SUpdateServer::FILES_DIRECTORY . "/" . urldecode($file));
 
         return $this->send(array("size" => $totalSize));
     }
