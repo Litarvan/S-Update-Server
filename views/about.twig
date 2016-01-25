@@ -1,5 +1,5 @@
 {#
- # Copyright 2015 TheShark34
+ # Copyright 2015-2016 Adrien Navratil
  #
  # This file is part of S-Update-Server.
  #
@@ -20,7 +20,7 @@
 {#
  # Panel about page
  #
- # v3-(Panel-1.1.0-BETA)
+ # v3-(Panel-1.2.0-BETA)
  #}
 
 {% extends 'templates/base.twig' %}
@@ -29,32 +29,32 @@
 
 {% block head %}
     <!-- Index CSS -->
-    <link href="{{ resPath ~ "css/about.css" }}" rel="stylesheet" />
+    <link href="{{ res("css/about.css") }}" rel="stylesheet" />
 {% endblock %}
 
 {% block content %}
     <style>
         html, body {
-            background-image: url({{ resPath ~ "images/background.png" }});
+            background-image: url({{ res("images/background.png") }});
         }
     </style>
 
     <div class='fulldiv'>
         <div class="center">
-            <img src="{{ resPath ~ 'images/logo.png' }}" />
-            <h1>S-Update-Server 3</h1>
+            <img src="{{ res('images/logo.png') }}" />
+            <h1>S-Update-Server 3.2.0 by Litarvan</h1>
             <br />
             <br />
 
             <p>
-                Copyright 2015 TheShark34 under LGPL-3.0 license
+                Copyright (c) 2015-2016 Adrien Navratil under LGPL-3.0 license
                 <br />
                 <br />
-                Sources on <a href="https://github.com/TheShark34/S-Update-Server">Github</a>
+                Sources on <a href="https://github.com/Litarvan/S-Update-Server">Github</a>
             </p>
 
             <br />
-            <img src="{{ resPath ~ 'images/sharklogo.png' }}" />
+            <img src="{{ res('images/sharklogo.png') }}" />
             <br /><br />
             <button id="home" style="margin-right: 30px;" onclick="window.location.href='home';">Home</button>
         </div>

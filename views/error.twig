@@ -1,5 +1,5 @@
 {#
- # Copyright 2015 TheShark34
+ # Copyright 2015-2016 Adrien Navratil
  #
  # This file is part of S-Update-Server.
  #
@@ -20,7 +20,7 @@
 {#
  # Panel error page
  #
- # v3-(Panel-1.1.0-BETA)
+ # v3-(Panel-1.2.0-BETA)
  #}
 
 {% extends 'templates/base.twig' %}
@@ -29,18 +29,18 @@
 
 {% block head %}
     <!-- Error page CSS -->
-    <link href="{{ resPath ~ "css/error.css" }}" rel="stylesheet" />
+    <link href="{{ res("css/error.css") }}" rel="stylesheet" />
 {% endblock %}
 
 {% block content %}
     <style>
         body {
-            background-image: url({{ resPath ~ "images/background.png" }});
+            background-image: url({{ res("images/background.png") }});
         }
     </style>
     <div class='fulldiv'>
         <div class="center">
-            <img src="{{ resPath ~ 'images/logo.png' }}" />
+            <img src="{{ res('images/logo.png') }}" />
 
             <br />
             <br />

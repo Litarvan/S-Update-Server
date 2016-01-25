@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright 2015 TheShark34
+ * Copyright 2015-2016 Adrien Navratil
  *
  * This file is part of S-Update-Server.
  *
@@ -19,53 +19,50 @@
  * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Response;
+use Paladin\Http\RedirectResponse;
+use Paladin\Http\Response;
+use Paladin\Paladin;
+use SUpdateServer\SUpdateServer;
 
-// Panel routes
-
-$app->get("/", function() {
-    return new RedirectResponse("panel");
+$this->get("/", function ()
+{
+    return new RedirectResponse(Paladin::getRootPath(true) . "panel");
 });
 
-$app->get("/panel", function() {
-    return new RedirectResponse("panel/home");
+$this->get("/panel", function ()
+{
+    return new RedirectResponse(Paladin::getRootPath(true) . "panel/home");
 });
 
-$app->get("/panel/{request}", "panel:getPanel")->before(SUpdateServer::installMiddleware())->before(SUpdateServer::authMiddleware());
-$app->post("/panel/{request}", "panel:postPanel")->before(SUpdateServer::installMiddleware())->before(SUpdateServer::authMiddleware());
+$this->get("/panel/:request", ["middleware" => ["install", "auth"], "uses" => "PanelController@getPanel"]);
+$this->post("/panel/:request", ["middleware" => ["install", "auth"], "uses" => "PanelController@postPanel"]);
 
-$app->get("/aubergine", function() {
+$this->get("/aubergine", function ()
+{
     return new RedirectResponse("http://www.google.fr/search?q=aubergine");
 });
 
-$app->get("/auth/logout", "auth:logout")->before(SUpdateServer::authMiddleware())->before(SUpdateServer::installMiddleware());
-$app->get("/auth/login", "auth:getLogin")->before(SUpdateServer::authMiddleware())->before(SUpdateServer::installMiddleware());
-$app->post("/auth/login", "auth:postLogin")->before(SUpdateServer::authMiddleware())->before(SUpdateServer::installMiddleware());
+$this->get("/auth/logout", ["middleware" => ["install", "auth"], "uses" => "AuthController@logout"]);
+$this->get("/auth/login", ["middleware" => ["install", "auth"], "uses" => "AuthController@getLogin"]);
+$this->post("/auth/login", ["middleware" => ["install"], "uses" => "AuthController@postLogin"]);
 
 
 // Internal routes
 
-$app->get("/set-enabled/{enabled}", function($enabled) {
-    if($enabled == "true")
-        SUpdateServer::serverConfig()->set("enabled", true);
-    else if($enabled = "false")
-        SUpdateServer::serverConfig()->set("enabled", false);
-    else
-        return new Response("Bad Argument, need to be true or false");
+$this->get("/set-enabled/:enabled", ["middleware" => ["install", "auth"], "uses" => function($enabled)
+{
+    Paladin::config("server")->set("enabled", $enabled == "true");
 
-    return new Response("");
-})->before(SUpdateServer::installMiddleware())->before(SUpdateServer::authMiddleware());
+    return new Response();
+}]);
 
-$app->get("/install", "install:getInstall")->before(SUpdateServer::installMiddleware());
-$app->post("/install", "install:postInstall")->before(SUpdateServer::installMiddleware());
+$this->get("/install", ["middleware" => "install", "uses" => "InstallController@getInstall"]);
+$this->post("/install", ["middleware" => "install", "uses" => "InstallController@postInstall"]);
 
-$app->post("/server/{request}", "server:postServer");
-$app->post("/server/list/{checkmethod}", "server:listFiles");
-$app->post("/server/check/{thing}/{what}", "server:check");
+$this->post("/server/:request", "ServerController@postServer");
+$this->post("/server/list/:checkmethod", "ServerController@listFiles");
+$this->post("/server/check/:thing/:what", "ServerController@check");
 
-$app->post("/stats/clear/{stat}", "stats:clear")->before(SUpdateserver::authMiddleware());
-$app->post("/stats/update", "stats:update")->before(SUpdateserver::authMiddleware());
-$app->post("/stats/get/{stat}", "stats:get");
-
-?>
+$this->post("/stats/clear/:stat", ["middleware" => "auth", "uses" => "StatsController@clear"]);
+$this->post("/stats/update", ["middleware" => "auth", "uses" => "StatsController@update"]);
+$this->post("/stats/get/:stat", "StatsController@get");

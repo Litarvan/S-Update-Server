@@ -1,5 +1,7 @@
+<?php
+
 /*
- * Copyright 2015 TheShark34
+ * Copyright 2015-2016 Adrien Navratil
  *
  * This file is part of S-Update-Server.
  *
@@ -17,21 +19,26 @@
  * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-p {
-  font-size: 25px;
-}
+use SUpdateServer\CheckMethod\CheckMethod;
+use SUpdateServer\SUpdateServer;
 
-h1 {
-  font-size: 85px;
-}
+/**
+ * The MD5 Check Method, uses the MD5s of the files
+ * to check them.
+ *
+ * @author  Litarvan
+ * @package S-Update-Server\CheckMethod
+ * @version 3-(Base-2.1.0-BETA)
+ */
+class MD5CheckMethod extends CheckMethod
+{
+    public function getName()
+    {
+        return "md5";
+    }
 
-.center {
-    position: absolute;
-    width: 950px;
-    height: 275px;
-    top: 50%;
-    left: 50%;
-    margin-left: -475px;
-    margin-top: -250px;
-    text-align: center;
+    public function createFileInfos($file)
+    {
+        return array("fileRelativePath" => $file, "md5" => md5_file(SUpdateServer::FILES_DIRECTORY . "/" . urldecode($file)));
+    }
 }

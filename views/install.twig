@@ -1,5 +1,5 @@
 {#
- # Copyright 2015 TheShark34
+ # Copyright 2015-2016 Adrien Navratil
  #
  # This file is part of S-Update-Server.
  #
@@ -20,7 +20,7 @@
 {#
  # Auth login page
  #
- # v3-(Panel-1.1.0-BETA)
+ # v3-(Panel-1.2.0-BETA)
  #}
 
 {% extends 'templates/base.twig' %}
@@ -29,7 +29,7 @@
 
 {% block head %}
     <!-- Install CSS -->
-    <link href="{{ resPath ~ "css/install.css" }}" rel="stylesheet" />
+    <link href="{{ res("css/install.css") }}" rel="stylesheet" />
 
     <!-- Lato Google Font -->
     <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
@@ -46,13 +46,13 @@
     {% else %}
         <style>
             html, body {
-                background-image: url({{ resPath ~ "images/background.png" }});
+                background-image: url({{ res("images/background.png") }});
             }
         </style>
     {% endif %}
     <div class='fulldiv'>
         <div class="center" id="centerDiv">
-            <img src="{{ resPath ~ "images/icon.png" }}" />
+            <img src="{{ res("images/icon.png") }}" />
 
             <p>Welcome</p>
 
@@ -70,5 +70,5 @@
 
 {% block scripts %}
     <!-- The FieldChecker JS -->
-    <script src="{{ resPath ~ 'js/fieldChecker.js' }}"></script>
+    <script src="{{ res('js/fieldChecker.js') }}"></script>
 {% endblock %}

@@ -1,9 +1,9 @@
 {
     "minimum-stability": "stable",
-    "name": "theshark34/s-update-server",
-    "description": "The Server for the S-Update update system",
-    "keywords": ["server", "s-update", "theshark34"],
-    "homepage": "http://github.com/TheShark34/S-Update-Server",
+    "name": "paladin/distrib",
+    "description": "The Paladin Framework main distrib (base project template)",
+    "keywords": ["paladin", "framework", "theshark34", "vavaballz", "light", "simple", "distrib", "template", "base"],
+    "homepage": "http://github.com/Paladin-FW/distrib",
     "license": "LGPL-3",
     "authors": [
         {
@@ -11,8 +11,13 @@
             "email": "adrien1975@live.fr"
         }
     ],
+    "autoload": {
+        "psr-4": {
+        	"SUpdateServer\\": "src/"
+        }
+    },
     "require": {
-        "silex/silex": "~1.3",
-        "twig/twig": "~1.0"
+        "paladin/paladin": ">=1.0.1",
+        "paladin/paladin-twig": "^1.0"
     }
 }

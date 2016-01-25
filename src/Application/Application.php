@@ -1,5 +1,7 @@
+<?php
+
 /*
- * Copyright 2015 TheShark34
+ * Copyright 2015-2016 Adrien Navratil
  *
  * This file is part of S-Update-Server.
  *
@@ -17,21 +19,27 @@
  * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-p {
-  font-size: 25px;
-}
+namespace SUpdateServer\Application;
 
-h1 {
-  font-size: 85px;
-}
+/**
+ * An Application !
+ *
+ * @author  Litarvan
+ * @version 3-(Internal-2.1.0-BETA)
+ */
+abstract class Application
+{
+    /**
+     * The Application name (Displayed in the Dashboard
+     * and more)
+     *
+     * @return string The Application name
+     */
+    public abstract function getName();
 
-.center {
-    position: absolute;
-    width: 950px;
-    height: 275px;
-    top: 50%;
-    left: 50%;
-    margin-left: -475px;
-    margin-top: -250px;
-    text-align: center;
+    /**
+     * Called by the AppLoader at the end of the
+     * Application loading
+     */
+    public abstract function load();
 }

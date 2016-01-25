@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright 2015 TheShark34
+ * Copyright 2015-2016 Adrien Navratil
  *
  * This file is part of S-Update-Server.
  *
@@ -19,31 +19,42 @@
  * along with S-Update-Server.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
+namespace SUpdateServer\Controllers;
 
-class ServerController {
+use Paladin\Http\JsonResponse;
+use Paladin\Http\Response;
+use Paladin\Paladin;
+use SUpdateServer\Application\AppLoader;
+use SUpdateServer\CheckMethod\CheckMethodLoader;
+use SUpdateServer\SUpdateServer;
 
-    public function postServer($request) {
-        switch($request) {
+/**
+ * The server controller, to do some internal things
+ *
+ * @author  Litarvan
+ * @version 3-(Internal-2.1.0-BETA)
+ */
+class ServerController
+{
+    public function postServer($request)
+    {
+        header("Content-Type: application/json");
+
+        switch ($request)
+        {
             case "is-enabled":
-                return $this->send(array("enabled" => (bool) SUpdateServer::serverConfig()->get("enabled")));
+                return new JsonResponse(array("enabled" => (bool) Paladin::config("server")->get("enabled")));
             case "size":
                 return $this->size();
             case "version":
-                return $this->send(array("version" => SUpdateServer::SERVER_VERSION));
+                return new JsonResponse(array("version" => SUpdateServer::SERVER_VERSION));
         }
 
         return new Response("Unknown request");
     }
 
-    private function send($array) {
-        $response = new JsonResponse($array);
-        $response->setEncodingOptions(JSON_PRETTY_PRINT);
-        return $response;
-    }
-
-    private function size() {
+    private function size()
+    {
         // Creating the variable
         $totalSize = 0;
 
@@ -54,9 +65,11 @@ class ServerController {
         $list = json_decode($json);
 
         // If JSON failed, printing an error message
-        if(json_last_error() !== JSON_ERROR_NONE) {
+        if (json_last_error() !== JSON_ERROR_NONE)
+        {
             echo "Bad Request : '" . $json . "'";
-            switch(json_last_error()) {
+            switch (json_last_error())
+            {
                 case JSON_ERROR_DEPTH:
                     echo ' - Maximum stack depth exceeded';
                     break;
@@ -74,14 +87,15 @@ class ServerController {
         }
 
         // For each file
-        foreach($list as $file)
+        foreach ($list as $file)
             // Adding its size to the total size
             $totalSize += filesize(SUpdateServer::FILES_DIRECTORY . "/" . urldecode($file));
 
-        return $this->send(array("size" => $totalSize));
+        return new JsonResponse(array("size" => $totalSize));
     }
 
-    public function listFiles($checkmethod) {
+    public function listFiles($checkmethod)
+    {
         // Creating the list
         $list = array();
 
@@ -89,17 +103,18 @@ class ServerController {
         $files = $this->listFolder(SUpdateServer::FILES_DIRECTORY, array());
 
         // Getting the selected check method
-        $checkMethod = \SUpdateServer\Internal\CheckMethodLoader::getCheckMethodLoader()->getCheckMethod($checkmethod);
+        $checkMethod = CheckMethodLoader::getCheckMethodLoader()->getCheckMethod($checkmethod);
 
         // If it returned false (The method wasn't found)
-        if(!$checkMethod)
+        if (!$checkMethod)
             // Printing an error message
-            return "Unknown check method. This is normally unpossible so please go away.";
+            return "Unknown check method. This is normally impossible so please go away.";
 
         // For each file
-        foreach($files as $file) {
+        foreach ($files as $file)
+        {
             // If it is a directory
-            if(is_dir($file))
+            if (is_dir($file))
                 // Continuing the loop
                 continue;
 
@@ -107,17 +122,18 @@ class ServerController {
             $list[sizeof($list)] = $checkMethod->createFileInfos($file);
         }
 
-        return $this->send($list);
+        return new JsonResponse($list);
     }
 
-    private function listFolder($folder, $list) {
+    private function listFolder($folder, $list)
+    {
         // Getting the list of all files in the folder
         $files = glob($folder . "/*");
 
         // For each file
-        foreach($files as $file)
+        foreach ($files as $file)
             // If it is a directory
-            if(is_dir($file))
+            if (is_dir($file))
                 // Listing it
                 $list = $this->listFolder($file, $list);
 
@@ -130,17 +146,17 @@ class ServerController {
         return $list;
     }
 
-    public function check($thing, $what) {
-        if($thing == "checkmethod")
-            $present = \SUpdateServer\Internal\CheckMethodLoader::getCheckMethodLoader()->isCheckMethodLoaded($what);
-        else if ($thing == "application") {
-            $present = \SUpdateServer\Internal\AppLoader::getAppLoader()->isApplicationLoaded($what);
-        } else
-            return new Response("First argument need to be checkmethod, or application", 500);
+    public function check($thing, $what)
+    {
+        if ($thing == "checkmethod")
+            $present = CheckMethodLoader::getCheckMethodLoader()->isCheckMethodLoaded($what);
+        else if ($thing == "application")
+        {
+            $present = AppLoader::getAppLoader()->isApplicationLoaded($what);
+        }
+        else
+            return new Response(200, "First argument need to be checkmethod, or application");
 
-        return $this->send(array("present" => $present));
+        return new JsonResponse(array("present" => $present));
     }
-
 }
-
-?>

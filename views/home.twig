@@ -1,5 +1,5 @@
 {#
- # Copyright 2015 TheShark34
+ # Copyright 2015-2016 Adrien Navratil
  #
  # This file is part of S-Update-Server.
  #
@@ -20,7 +20,7 @@
 {#
  # Panel home page
  #
- # v3-(Panel-1.1.0-BETA)
+ # v3-(Panel-1.2.0-BETA)
  #}
 
 {% extends 'templates/base.twig' %}
@@ -29,7 +29,7 @@
 
 {% block head %}
     <!-- Index CSS -->
-    <link href="{{ resPath ~ "css/index.css" }}" rel="stylesheet" />
+    <link href="{{ res("css/index.css") }}" rel="stylesheet" />
 {% endblock %}
 
 {% block content %}
@@ -38,30 +38,30 @@
         <div id="left-buttons">
             <a href="statistics">
                 <div id="statistics" class="button top-button" style="display: none;">
-                    <img id="statistics-icon" class="button-icon" src="{{ resPath ~ 'images/stats.png' }}" />
+                    <img id="statistics-icon" class="button-icon" src="{{ res('images/stats.png') }}" />
                     <p id="statistics-label" class="button-label">Statistics</p>
                 </div>
             </a>
 
             <a href="../auth/logout">
                 <div id="disconnect" class="button bottom-button" style="display: none;">
-                    <img id="disconnect-icon" class="button-icon" src="{{ resPath ~ 'images/disconnect.png' }}" />
+                    <img id="disconnect-icon" class="button-icon" src="{{ res('images/disconnect.png') }}" />
                     <p id="disconnect-label" class="button-label">Disconnect</p>
                 </div>
             </a>
         </div>
 
         <div style="text-align: center;">
-            <img id="sharklogo" src="{{ resPath ~ 'images/sharklogo.png' }}" />
+            <img id="sharklogo" src="{{ res('images/sharklogo.png') }}" />
             <canvas id="canvas" width="350" height="350"></canvas>
-            <img id="logo" style="display: none;" src="{{ resPath ~ 'images/icon.png' }}" />
-            <img id="textlogo" style="display: none;" src="{{ resPath ~ 'images/textlogo.png' }}" />
+            <img id="logo" style="display: none;" src="{{ res('images/icon.png') }}" />
+            <img id="textlogo" style="display: none;" src="{{ res('images/textlogo.png') }}" />
 
             <div id="infos">
                 <b>Status : <span style="color: #00ff00">Working</span></b><br /><br />
 
-                Framework : <span style="color: #00ff00">Silex {{ silexVersion }}</span><br />
-                Server : <span style="color: #00ff00">{{ server }}</span></br />
+                Framework : <span style="color: #00ff00">Paladin {{ paladinVersion }}</span><br />
+                Server : <span style="color: #00ff00">{{ server }}</span><br />
                 Base : <span style="color: #00ff00">{{ base }}</span><br />
                 Panel : <span style="color: #00ff00">{{ panel }}</span><br />
                 Internal : <span style="color: #00ff00">{{ internal }}</span><br />
@@ -71,14 +71,14 @@
         <div id="right-buttons">
             <a href="settings">
                 <div id="settings" class="button top-button" style="display: none;">
-                    <img id="settings-icon" class="button-icon" src="{{ resPath ~ 'images/settings.png' }}" />
+                    <img id="settings-icon" class="button-icon" src="{{ res('images/settings.png') }}" />
                     <p id="settings-label" class="button-label">Settings</p>
                 </div>
             </a>
 
             <a href="about">
                 <div id="about" class="button bottom-button" style="display: none;">
-                    <img id="about-icon" class="button-icon" src="{{ resPath ~ 'images/about.png' }}" />
+                    <img id="about-icon" class="button-icon" src="{{ res('images/about.png') }}" />
                     <p id="about-label" class="button-label">About</p>
                 </div>
             </a>
@@ -91,10 +91,10 @@
 
 {% block scripts %}
     <!-- Index JS script -->
-    <script src="{{ resPath ~ 'js/index.js' }}"></script>
+    <script src="{{ res('js/index.js') }}"></script>
 
     <!-- Starting the JS script -->
     <script>
-        start({{ serverEnabled ? "true" : "false" }}, "{{ resPath ~ 'images/background.png' }}");
+        start({{ serverEnabled ? "true" : "false" }}, "{{ res('images/background.png') }}");
     </script>
 {% endblock %}

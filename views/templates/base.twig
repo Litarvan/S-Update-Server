@@ -1,5 +1,5 @@
 <!--
-  Copyright 2015 TheShark34
+  Copyright 2015-2016 Adrien Navratil
 
   This file is part of S-Update-Server.
 
@@ -20,10 +20,8 @@
 {#
  # Panel base template
  #
- # v3-(Panel-1.1.0-BETA)
+ # v3-(Panel-1.2.0-BETA)
  #}
-
-{%  set resPath = app.request.basepath ~ "/resources/" %}
 
 <!DOCTYPE html>
 <html>
@@ -34,10 +32,10 @@
     <title>S-Update-Server - {% block title %}{% endblock %}</title>
 
     <!-- Bootstrap -->
-    <link href="{{ resPath ~ 'css/bootstrap.min.css' }}" rel="stylesheet">
+    <link href="{{ res('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- The S-Update Icon -->
-    <link rel="icon" href="{{ resPath ~ 'images/icon.png' }}" />
+    <link rel="icon" href="{{ res('images/icon.png') }}" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -47,7 +45,7 @@
     <![endif]-->
 
     <!-- S-Update-Server global CSS -->
-    <link href="{{ resPath ~ 'css/global.css' }}" rel="stylesheet">
+    <link href="{{ res('css/global.css') }}" rel="stylesheet">
 
     {% block head %}{% endblock %}
 </head>
@@ -56,10 +54,10 @@
     {% block content %}{% endblock %}
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="{{ resPath ~ 'js/jquery-1.11.3.min.js' }}"></script>
+    <script src="{{ res('js/jquery-1.11.3.min.js') }}"></script>
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{{ resPath ~ 'js/bootstrap.min.js' }}"></script>
+    <script src="{{ res('js/bootstrap.min.js') }}"></script>
 
     {% block scripts %}{% endblock %}
 </body>

@@ -1,5 +1,5 @@
 {#
- # Copyright 2015 TheShark34
+ # Copyright 2015-2016 Adrien Navratil
  #
  # This file is part of S-Update-Server.
  #
@@ -20,7 +20,7 @@
 {#
  # Panel statistics page
  #
- # v3-(Panel-1.1.0-BETA)
+ # v3-(Panel-1.2.0-BETA)
  #}
 
 {% extends 'templates/base.twig' %}
@@ -29,21 +29,21 @@
 
 {% block head %}
     <!-- Index CSS -->
-    <link href="{{ resPath ~ "css/stats.css" }}" rel="stylesheet" />
+    <link href="{{ res("css/stats.css") }}" rel="stylesheet" />
 {% endblock %}
 
 {% block content %}
     <style>
         html, body {
-            background-image: url({{ resPath ~ "images/background.png" }});
+            background-image: url({{ res("images/background.png") }});
         }
     </style>
 
     <div id="mainDiv">
-        <img src="{{ resPath ~ 'images/logo.png' }}" />
+        <img src="{{ res('images/logo.png') }}" />
         <br />
         <br />
-        <button style="width: 200px" onclick="window.location.href='{{ app.request.basepath }}';">Home</button>
+        <button style="width: 200px" onclick="window.location.href='..';">Home</button>
         <br />
         <br />
 
@@ -75,6 +75,6 @@
 {% block scripts %}
 
     <!-- The Stats Page Script -->
-    <script src="{{ resPath ~ "js/stats.js" }}"></script>
+    <script src="{{ res("js/stats.js") }}"></script>
 
 {% endblock %}
