@@ -1,5 +1,7 @@
+.sass-cache
 cache/
 .idea/
 files/*
 composer.lock
 vendor/
+node_modules/
