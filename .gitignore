@@ -5,3 +5,4 @@ files/*
 composer.lock
 vendor/
 node_modules/
+build/
