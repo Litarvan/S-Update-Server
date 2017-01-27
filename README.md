@@ -1,2 +1,3 @@
-# distrib
-Paladin framework basic distribution (project base template)
+# S-Update-Server
+
+## Currently in hard work !
