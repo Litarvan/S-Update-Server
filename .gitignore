@@ -1,8 +1,6 @@
-.sass-cache
-cache/
-.idea/
-files/*
-composer.lock
-vendor/
 node_modules/
-build/
+*.iml
+.idea/
+vendor/
+composer.phar
+logs/
